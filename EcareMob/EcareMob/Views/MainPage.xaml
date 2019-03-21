@@ -5,7 +5,11 @@
              Title="{Binding Title}">
 
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
+        <Label Text="{Binding WelcomeMsg}" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+        <Entry Text="{Binding Username}" Placeholder="Όνομα Χρήστη"/>
+        <Entry Text="{Binding Password}" IsPassword="True" Placeholder="Κωδικός Πρόσβασης"/>
+
+        <Button Text="Είσοδος" Command="{Binding SpeakCommand}"/>
     </StackLayout>
 
 </ContentPage>
