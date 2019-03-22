@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EcareMob.Views.Login"
+             WidthRequest="20" Padding="20"
+             BackgroundColor="white"
+             Title="{Binding Title}">
+
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <Label Text="{Binding WelcomeMessage}" HorizontalOptions="Center" />
+        <Entry Text="{Binding Username}" Placeholder="Όνομα Χρήστη" HorizontalTextAlignment ="Center" />
+        <Entry Text="{Binding Password}" IsPassword="True" Placeholder="Κωδικός Πρόσβασης" HorizontalTextAlignment ="Center"/>
+
+        <Button Text="Είσοδος" Command="{Binding SpeakCommand}"/>
+    </StackLayout>
+
+</ContentPage>
+
+
+
+<!--<StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+    <Label Text="{Binding WelcomeMsg}" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+
+
+    <Button Text="Είσοδος" Command="{Binding SpeakCommand}"/>
+</StackLayout>
+
+
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Layout1" x:Class="Layout1.MainPage" Title="LoginPage" WidthRequest="20" Padding="20" BackgroundColor="Yellow">
+    <StackLayout Spacing="20" Padding="50" VerticalOptions="Center">
+        <Entry Placeholder="Mail id"></Entry>
+        <Entry Placeholder="Password" IsPassword="True"></Entry>
+        <Button Text="Log In" TextColor="White" BackgroundColor="##ff77D065"></Button>
+    </StackLayout>
+</ContentPage>-->  

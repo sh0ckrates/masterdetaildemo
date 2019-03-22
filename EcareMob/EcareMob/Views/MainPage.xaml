@@ -6,8 +6,7 @@
 
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
         <Label Text="{Binding WelcomeMsg}" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
-        <Entry Text="{Binding Username}" Placeholder="Όνομα Χρήστη"/>
-        <Entry Text="{Binding Password}" IsPassword="True" Placeholder="Κωδικός Πρόσβασης"/>
+
 
         <Button Text="Είσοδος" Command="{Binding SpeakCommand}"/>
     </StackLayout>

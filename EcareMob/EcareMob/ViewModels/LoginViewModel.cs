@@ -8,7 +8,7 @@ using System.Text;
 
 namespace EcareMob.ViewModels
 {
-    public class MainPageViewModel : ViewModelBase
+    public class LoginViewModel : ViewModelBase
     {
         private string _userName;
         public string Username
@@ -35,11 +35,11 @@ namespace EcareMob.ViewModels
         }
 
 
-        public MainPageViewModel(INavigationService navigationService)
+        public LoginViewModel(INavigationService navigationService)
             : base(navigationService)
         {
             Title = "Bmw Customer Web Portal";
-            WelcomeMessage = "";//Καλώς ήρθατε στην προσωπική σας σελίδα στο portal πελατών της BMW Financial Services!";
+            WelcomeMessage = "Καλώς ήρθατε στην προσωπική σας σελίδα στο portal πελατών της BMW Financial Services!";
 
 
         }
