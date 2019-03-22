@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Acr.UserDialogs;
 
 namespace EcareMob.ViewModels
 {
@@ -35,8 +36,8 @@ namespace EcareMob.ViewModels
         }
 
 
-        public MainPageViewModel(INavigationService navigationService)
-            : base(navigationService)
+        public MainPageViewModel(INavigationService navigationService, IUserDialogs dialog)
+            : base(navigationService ,dialog)
         {
             Title = "Bmw Customer Web Portal";
             WelcomeMessage = "";//Καλώς ήρθατε στην προσωπική σας σελίδα στο portal πελατών της BMW Financial Services!";

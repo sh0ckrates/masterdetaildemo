@@ -1,9 +1,11 @@
-﻿using Android.App;
+﻿using Acr.UserDialogs;
+using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
 using Prism;
 using Prism.Ioc;
+using Xamarin.Forms;
 
 namespace EcareMob.Droid
 {
@@ -22,6 +24,7 @@ namespace EcareMob.Droid
             base.SetTheme(Resource.Style.MainTheme);
 
             base.OnCreate(bundle);
+            UserDialogs.Init(() => (Activity)Forms.Context);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App(new AndroidInitializer()));
