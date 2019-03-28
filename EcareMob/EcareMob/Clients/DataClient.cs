@@ -28,6 +28,12 @@ namespace EcareMob.Clients
 
 
 
+        public async Task<User> GetUserInfo(int id)
+        {
+            var uri = $"{Settings.ServerUrl}user/userinfo?id={id}";
+            return await _requestprovider.GetSingleItemRequest<User>(uri);
+        }
+
 
 
 

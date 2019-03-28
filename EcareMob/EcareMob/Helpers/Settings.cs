@@ -45,6 +45,10 @@ namespace EcareMob.Helpers
         private const string FullNameKey = "fullname_key";
         private static readonly string FullNameDefault = "unknown";
 
+
+        private const string CharismaCodeKey = "charisma_code";
+        private static readonly string CharismaCodeDefault = "";
+
         private const string UserIdKey = "userid_key";
         private static readonly int UserIdDefault = -1;
 
@@ -86,6 +90,14 @@ namespace EcareMob.Helpers
             get { return AppSettings.GetValueOrDefault(UserNameKey, UserNameDefault); }
             set { AppSettings.AddOrUpdateValue(UserNameKey, value); }
         }
+
+
+        public static string CharismaCode
+        {
+            get { return AppSettings.GetValueOrDefault(CharismaCodeKey, CharismaCodeDefault); }
+            set { AppSettings.AddOrUpdateValue(CharismaCodeKey, value); }
+        }
+
         public static string FullName
         {
             get { return AppSettings.GetValueOrDefault(FullNameKey, FullNameDefault); }

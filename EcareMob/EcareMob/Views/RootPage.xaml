@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                  prism:ViewModelLocator.AutowireViewModel="True"
+                  xmlns:local="clr-namespace:EcareMob.Views;assembly=EcareMob"
+                  xmlns:behavior="clr-namespace:EcareMob.Behavior;assembly=EcareMob"
+                  xmlns:customControls="clr-namespace:EcareMob.CustomControls;assembly=EcareMob"
+                  x:Class="EcareMob.Views.RootPage"
+                  Title="Root Page">
+
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <BoxView Grid.Row="0" Color="DodgerBlue" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></BoxView>
+
+                <StackLayout Grid.Row="0" VerticalOptions="End" HorizontalOptions="Start" Margin="10,10">
+                    <Label  Text="Bmw Customer Mobile Portal"
+                            VerticalOptions="EndAndExpand"
+                            Style="{DynamicResource EvolveDetailTextStyleBold}"
+                            TextColor="White"
+                            HorizontalOptions="Start"/>
+                    <Label  Text="{Binding FullName}"
+                            VerticalOptions="EndAndExpand"
+                            Style="{DynamicResource EvolveDetailTextStyle}"
+                            TextColor="White"
+                            HorizontalOptions="Start"/>
+                </StackLayout>
+                <ListView Grid.Row="1" x:Name="navigationDrawerList"
+                  RowHeight="50"
+                  SeparatorVisibility="None"
+                          ItemsSource="{Binding MenuItems}"
+                          behavior:ItemTappedAttached.Command="{Binding NavigateToCommand}"
+                          SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <!-- Main design for our menu items -->
+                                <StackLayout VerticalOptions="FillAndExpand"
+                                             Orientation="Horizontal"
+                                             Padding="20,10,0,10"
+                                             Spacing="20">
+                                    <customControls:IconView Source="{Binding Icon}" HeightRequest="25" WidthRequest="25" Foreground="{Binding FColor, Mode=TwoWay}"/>
+                                    <Label Text="{Binding Title}"
+                                           Style="{DynamicResource MenuTextStyle}"
+                                           VerticalOptions="Center"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView> 
+            </Grid>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    
+</MasterDetailPage>

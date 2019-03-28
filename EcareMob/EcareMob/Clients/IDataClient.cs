@@ -8,6 +8,9 @@ namespace EcareMob.Clients
     public interface IDataClient
     {
         Task<User> GetAuthentication(User user);
+        Task<User> GetUserInfo(int id);
+
+
 
         //Task<List<OpenInvetory>> GetOpenInventories();
         //Task<BarcodeStatus> CheckBarCode(string barcode);

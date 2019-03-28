@@ -30,6 +30,8 @@ namespace EcareMob.Services
                 Settings.AccessToken = authResult.Token;
                 //Settings.RefreshToken = authResult.RefreshToken;
                 //await PersistClientInfo();
+
+                Settings.UserId = authResult.Id;
             }
 
             return !authResult.AuthenticationError;

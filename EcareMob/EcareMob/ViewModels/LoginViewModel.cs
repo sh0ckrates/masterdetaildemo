@@ -96,9 +96,19 @@ namespace EcareMob.ViewModels
                     LoginMessage = "Success";
                     //await ViewModel.LoadInitialData();
                     Settings.UserName = Username;
+
+
+                    var res = await _dataClient.GetUserInfo(Settings.UserId);
+
+                    if (res != null)
+                    {
+                        Settings.FullName = res.FullName;
+                        Settings.CharismaCode = res.CharismaCode;
+                    }
+
                     //App.IsLoggedIn = true;
                     //await NavigationService.NavigateAsync("/RootPage/NavigationPage/MainPage");
-                    await NavigationService.NavigateAsync("NavigationPage/MainPage");
+                    await NavigationService.NavigateAsync("/RootPage/NavigationPage/MainPage");
 
                 }
                 else
@@ -126,8 +136,8 @@ namespace EcareMob.ViewModels
                 {
                     //RaisePropertyChanged(ProfileImage);
 
-                    await _dialog.AlertAsync("Login Successfull", "Alert", "OK");
-
+                    //await _dialog.AlertAsync("Login Successfull", "Alert", "OK");
+                    
                 }
 
             }

@@ -43,6 +43,8 @@ namespace EcareMob
 
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
+            containerRegistry.RegisterForNavigation<RootPage, RootPageViewModel>();
+
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<Login, LoginViewModel>();
 

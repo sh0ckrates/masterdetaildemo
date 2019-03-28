@@ -4,18 +4,20 @@
 //using System.Net.Http;
 //using System.Threading.Tasks;
 //using Acr.UserDialogs;
+//using EcareMob.Clients.Base;
 //using Prism.Commands;
 //using Prism.Mvvm;
 //using Prism.Navigation;
 
 
 
-//namespace Thesis.Invetory.Shared.Infrastructure {
+//namespace Thesis.Invetory.Shared.Infrastructure
+//{
 
 //    public abstract class AppMapViewModelBase : BindableBase, INavigationAware, IConfirmNavigation, IDestructible
 //    {
 
-//		const string RootUriPrependText = "/";
+//        const string RootUriPrependText = "/";
 //        protected const string LoadingMessageConstant = "Loading items...";
 //        DelegateCommand<string> _navigateAbsoluteCommand;
 //        DelegateCommand<string> _navigateCommand;
@@ -284,11 +286,11 @@
 //            }
 //            catch (Exception ex) when (ex is ServiceManagedErrorException)
 //            {
-//                await Dialog.AlertAsync(ex.Message, TextResources.Commnunication_Error,TextResources.OK);
+//                await Dialog.AlertAsync(ex.Message, TextResources.Commnunication_Error, TextResources.OK);
 //            }
 //            catch (Exception ex) when (ex is ServiceAuthenticationException)
 //            {
-//                await Dialog.AlertAsync(ex.Message, TextResources.Error_Authentication,TextResources.OK);
+//                await Dialog.AlertAsync(ex.Message, TextResources.Error_Authentication, TextResources.OK);
 //            }
 //            catch (Exception ex) when (ex is ValidateException)
 //            {
