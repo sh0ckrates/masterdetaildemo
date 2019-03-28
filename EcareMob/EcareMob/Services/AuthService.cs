@@ -21,9 +21,9 @@ namespace EcareMob.Services
 
         }
 
-        public async Task<bool> AuthenticateAsync(string username, string password)
+        public async Task<bool> AuthenticateAsync(string username, string password, IDataClient dataClient)
         {
-            var authResult = await RequestToken(username, password);
+            var authResult = await RequestToken(username, password, dataClient);
             if (!authResult.AuthenticationError)
             {
                 Settings.ExpireTokenDate = DateTime.UtcNow.AddSeconds(5000);
@@ -35,16 +35,25 @@ namespace EcareMob.Services
             return !authResult.AuthenticationError;
         }
 
-        private async Task<User> RequestToken(string username, string password)
+        private async Task<User> RequestToken(string username, string password, IDataClient dataClient)
         {
             var authPostModel = new User()
             {
                 Username = username,
                 Password = password
             };
-            var res = await _dataClient.GetAuthentication(authPostModel);
 
-            return res;
+            try
+            {
+                var res = await dataClient.GetAuthentication(authPostModel);
+                return res;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
 
         public async Task<bool> LogoutAsync()

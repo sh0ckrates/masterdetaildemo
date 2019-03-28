@@ -30,7 +30,10 @@ namespace EcareMob.Helpers
 
         private const string ServerUrlKey = "serverurl_key";
         //private static readonly string ServerUrlDefault = "http://mobile.ethesis.eu/inventory/";
-        private static readonly string ServerUrlDefault = "http://localhost:9000/";
+        private static readonly string ServerUrlDefault = "http://ethesis.eu/ecareapi/";//  http://localhost:9000/
+
+        private static readonly string EncryptionKey = "12!bm**46v@XAZ";
+        private static readonly string EncryptionKeyDefault = "12!bm**46v@XAZ";
 
 
         private const string VersionKey = "version_key";
@@ -103,6 +106,13 @@ namespace EcareMob.Helpers
             get { return AppSettings.GetValueOrDefault(ServerUrlKey, ServerUrlDefault); }
             set { AppSettings.AddOrUpdateValue(ServerUrlKey, value); }
         }
+
+        public static string EncKey
+        {
+            get { return AppSettings.GetValueOrDefault(EncryptionKey, EncryptionKeyDefault); }
+            set { AppSettings.AddOrUpdateValue(EncryptionKey, value); }
+        }
+
 
 
         public static string Language

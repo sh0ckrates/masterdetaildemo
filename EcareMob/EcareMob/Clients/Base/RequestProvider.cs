@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -23,6 +24,62 @@ namespace EcareMob.Clients.Base
         {
             _authenticator = authenticator;
         }
+
+
+        public class JsonContent : StringContent
+        {
+            public JsonContent(object obj) :
+                base(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json")
+            { }
+        }
+
+        public async Task<T> PostAuthRequest<T, TK>(string apiUrl, TK postObject)
+        {
+            T result = default(T);
+
+            using (var client = new HttpClient())
+            {
+                try
+                {
+                    var json = JsonConvert.SerializeObject(postObject);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = null;
+                    response = await client.PostAsync(apiUrl, content);
+
+
+                    //var postcontent = JsonConvert.SerializeObject(postObject,
+                    //    Newtonsoft.Json.Formatting.None,
+                    //    new JsonSerializerSettings
+                    //    {
+                    //        NullValueHandling = NullValueHandling.Ignore
+                    //    });
+                    //var response = await client.PostAsync(apiUrl, new StringContent(postcontent, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+
+                    await HandleResponse(response);
+                    string responseData = await response.Content.ReadAsStringAsync();
+
+                    result = await Task.Run(() => JsonConvert.DeserializeObject<T>(responseData));
+
+                    return result;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    throw;
+                }
+
+            }
+
+        }
+
+
+
+
+
+
+
+
 
         public async Task<T> PostRequest<T, TK>(string apiUrl, TK postObject)
         {

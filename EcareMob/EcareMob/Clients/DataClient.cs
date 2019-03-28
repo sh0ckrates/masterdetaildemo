@@ -23,7 +23,7 @@ namespace EcareMob.Clients
         public async Task<User> GetAuthentication(User user)
         {
             var uri = $"{Settings.ServerUrl}user/authenticate";
-            return await _requestprovider.PostRequest<User,User>(uri,user);
+            return await _requestprovider.PostAuthRequest<User,User>(uri,user);
         }
 
 

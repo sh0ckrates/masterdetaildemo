@@ -15,7 +15,7 @@
                 HorizontalOptions="FillAndExpand"
                 StyleId="SignInButton"
                 TextColor="White"
-                BackgroundColor="#FFFFFF">
+                BackgroundColor="#92a2bd">
         </Button>
         <Label Text="{Binding LoginMessage}" VerticalOptions="Center"  HorizontalOptions="Center"/>
 

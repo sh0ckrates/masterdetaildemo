@@ -11,6 +11,8 @@ using EcareMob.Helpers;
 using EcareMob.Services;
 using Prism.Services;
 using Thesis.Invetory.Shared.Services;
+using EcareMob.Clients;
+using EcareMob.Models;
 
 namespace EcareMob.ViewModels
 {
@@ -18,6 +20,11 @@ namespace EcareMob.ViewModels
     {
         private readonly IAuthenticationService _authenticator;
         private readonly IPageDialogService _dialogService;
+
+
+        private IUserDialogs _dialog;
+        private readonly IDataClient _dataClient;
+
 
         private string _userName;
         public string Username
@@ -62,14 +69,17 @@ namespace EcareMob.ViewModels
 
 
 
-        public LoginViewModel(INavigationService navigationService, IAuthenticationService authedicator, IUserDialogs dialog)
-            : base(navigationService , dialog)
+        public LoginViewModel(INavigationService navigationService, IAuthenticationService authenticator, IUserDialogs dialog, IDataClient dataClient)
+            : base(navigationService, dialog)
         {
-
+            _dialog = dialog;
+            _authenticator = authenticator;
+            _dataClient = dataClient;
             Title = "Bmw Customer Web Portal";
             WelcomeMessage = "Καλώς ήρθατε στην προσωπική σας σελίδα στο portal πελατών της BMW Financial Services!";
 
             LoginCommand = new DelegateCommand(async () => await Login());
+
         }
 
 
@@ -77,10 +87,11 @@ namespace EcareMob.ViewModels
 
         private async Task Login()
         {
+
             await Pass(async () =>
             {
                 LoginMessage = "";
-                if  (await Authenticate())
+                if (await Authenticate())
                 {
                     LoginMessage = "Success";
                     //await ViewModel.LoadInitialData();
@@ -99,7 +110,7 @@ namespace EcareMob.ViewModels
 
         }
 
-        
+
 
 
 
@@ -108,21 +119,25 @@ namespace EcareMob.ViewModels
             bool success = false;
             try
             {
-                success = await _authenticator.AuthenticateAsync(Username, Password);
+                var encryptedPassword = Encryption.Encrypt(Password, Settings.EncKey);
+
+                success = await _authenticator.AuthenticateAsync(Username, encryptedPassword, _dataClient);
                 if (success)
                 {
                     //RaisePropertyChanged(ProfileImage);
 
-                    await _dialogService.DisplayAlertAsync("Alert", "Login Successfull", "OK");
+                    await _dialog.AlertAsync("Login Successfull", "Alert", "OK");
 
                 }
 
             }
             catch (Exception ex)
             {
-                await _dialogService.DisplayAlertAsync("Alert", ex.Message, "OK");
+                await _dialog.AlertAsync(ex.Message, "Alert", "OK");
             }
             return success;
         }
+
+
     }
 }

@@ -7,6 +7,10 @@ namespace EcareMob.Clients.Base
 {
     public interface IRequestProvider
     {
+        Task<T> PostAuthRequest<T, TK>(string apiUrl, TK postObject);
+
+
+
         Task<T> PostRequest<T, TK>(string apiUrl, TK postObject);
         Task<List<T>> PostItemWithMultipleResultRequest<T, TK>(string apiUrl, TK postObject);
         Task<TK> PutRequest<T, TK>(string apiUrl, T postObject);

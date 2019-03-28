@@ -1,10 +1,11 @@
 ﻿using System.Threading.Tasks;
+using EcareMob.Clients;
 
 namespace EcareMob.Services
 {
     public interface IAuthenticationService
     {
-        Task<bool> AuthenticateAsync(string username, string password);
+        Task<bool> AuthenticateAsync(string username, string password, IDataClient dataClient);
 
         Task<bool> LogoutAsync();
 
