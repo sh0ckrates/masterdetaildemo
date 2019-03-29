@@ -38,7 +38,7 @@ namespace EcareMob.Models
 
         public enum MenuType
         {
-            Inventory,
+            Contact,
             Settings,
             About,
             Logout

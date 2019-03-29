@@ -25,7 +25,7 @@ namespace EcareMob.ViewModels
                 if (value == _selectedMenuItem)
                     return;
                 _selectedMenuItem = value;
-                _selectedMenuItem.FColor = (Color)Application.Current.Resources["Primary"];
+                _selectedMenuItem.FColor = Color.AliceBlue;//(Color)Application.Current.Resources["Primary"];
                 UpdateMenuItems(_selectedMenuItem);
                 RaisePropertyChanged();
             }
@@ -61,14 +61,14 @@ namespace EcareMob.ViewModels
                 //    MenuType = MenuType.Settings,
                 //    FColor = Color.Gray
                 //},
-                // new MyMenuItem()
-                //{
-                //    Title = "Επικοινωνία",
-                //    Uri = "NavigationPage/About",
-                //    Icon = "ic_info_outline_black_24dp.png",
-                //    MenuType = MenuType.About,
-                //    FColor = Color.Gray
-                //},
+                 new MyMenuItem()
+                {
+                    Title = "Επικοινωνία",
+                    Uri = "NavigationPage/Contact",
+                    Icon = "ic_info_outline_black_24dp.png",
+                    MenuType = MenuType.Contact,
+                    FColor = Color.Gray
+                },
                 // new MyMenuItem()
                 //{
                 //    Title = "'Εξοδος",
@@ -80,7 +80,7 @@ namespace EcareMob.ViewModels
 
             };
 
-            SelectedMenuItem = MenuItems.FirstOrDefault(x => x.MenuType == MenuType.Inventory);
+            SelectedMenuItem = MenuItems.FirstOrDefault(x => x.MenuType == MenuType.Contact);
         }
 
         private void Navigate(MyMenuItem item)
