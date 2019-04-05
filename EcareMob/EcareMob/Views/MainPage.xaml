@@ -1,14 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EcareMob.Views.MainPage"
-             Title="{Binding Title}">
+<ContentPage
+    x:Class="EcareMob.Views.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="{Binding Title}">
 
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="{Binding WelcomeMsg}" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+        <Label
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Text="{Binding WelcomeMsg}" />
 
 
-        <Button Text="Είσοδος" Command="{Binding SpeakCommand}"/>
+        <Button Command="{Binding SpeakCommand}" Text="Είσοδος" />
+
     </StackLayout>
 
-</ContentPage>
+</ContentPage>  

@@ -121,7 +121,7 @@ namespace EcareMob.ViewModels
             Title = "Επικοινωνία";
             ContactTitle = "BMW Financial Services";
             ContactText = "Επικοινωνήστε με το Τμήμα Εξυπηρέτησης Πελατών.Κάθε μέρα στη διάθεσή σας για οποιαδήποτε ερώτηση!";
-
+            FaxNumber = "210-9118505";
 
 
             PhoneNumber = "210-9118500";

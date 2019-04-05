@@ -25,7 +25,7 @@ namespace EcareMob.ViewModels
                 if (value == _selectedMenuItem)
                     return;
                 _selectedMenuItem = value;
-                _selectedMenuItem.FColor = Color.AliceBlue;//(Color)Application.Current.Resources["Primary"];
+                _selectedMenuItem.FColor = Color.LightSlateGray;//(Color)Application.Current.Resources["Primary"];
                 UpdateMenuItems(_selectedMenuItem);
                 RaisePropertyChanged();
             }
