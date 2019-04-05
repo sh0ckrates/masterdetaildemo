@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:customControls="clr-namespace:EcareMob.CustomControls;assembly=EcareMob"
+    xmlns:iconize="clr-namespace:Plugin.Iconize;assembly=Plugin.Iconize"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     Title="{Binding Title}"
     prism:ViewModelLocator.AutowireViewModel="True">
@@ -142,8 +143,8 @@
                             <customControls:IconView.Source>
                                 <OnPlatform
                                     x:TypeArguments="x:String"
-                                    Android="ic_email_black_24dp.png"
-                                    iOS="ic_email.png" />
+                                    Android="icon1.png"
+                                    iOS="icon1.png" />
                             </customControls:IconView.Source>
                             <customControls:IconView.Foreground>
                                 <OnPlatform
@@ -155,7 +156,6 @@
                     </AbsoluteLayout.Children>
                 </AbsoluteLayout>
             </AbsoluteLayout>
-
 
             <AbsoluteLayout>
                 <StackLayout Padding="20,10" Spacing="0">
@@ -184,12 +184,13 @@
                             NumberOfTapsRequired="1" />
                     </AbsoluteLayout.GestureRecognizers>
                     <AbsoluteLayout.Children>
+
                         <customControls:IconView
                             AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
                             AbsoluteLayout.LayoutFlags="PositionProportional"
                             Foreground="{StaticResource Primary}"
                             HeightRequest="25"
-                            Source="ic_email_black_24dp.png">
+                            Source="icon1">
                             <customControls:IconView.GestureRecognizers>
                                 <TapGestureRecognizer
                                     Command="{Binding FaxIconTappedCommand}"
@@ -204,7 +205,7 @@
                 Grid.Row="0"
                 Grid.Column="5"
                 Margin="0,10,0,0"
-                Source="maybe.png" />-->
+                Source="icon1" />-->
 
 
 

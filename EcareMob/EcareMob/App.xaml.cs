@@ -7,6 +7,7 @@ using Prism;
 using Prism.Ioc;
 using EcareMob.ViewModels;
 using EcareMob.Views;
+using Plugin.Iconize;
 using Prism.DryIoc;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -23,9 +24,23 @@ namespace EcareMob
          */
         static Application _app;
         public static Application CurrentApp => _app;
-        public App() : this(null) { }
 
-        public App(IPlatformInitializer initializer = null) : base(initializer) { }
+        public App(): this(null)
+        {
+
+
+
+        }
+
+        public App(IPlatformInitializer initializer = null) : base(initializer)
+        {
+
+            Iconize.With(new Plugin.Iconize.Fonts.FontAwesomeBrandsModule())
+                .With(new Plugin.Iconize.Fonts.FontAwesomeBrandsModule())
+                .With(new Plugin.Iconize.Fonts.FontAwesomeSolidModule())
+                .With(new Plugin.Iconize.Fonts.IoniconsModule())
+                .With(new Plugin.Iconize.Fonts.SimpleLineIconsModule());
+        }
 
         protected override async void OnInitialized()
         {
@@ -61,5 +76,10 @@ namespace EcareMob
             Helpers.Settings.AccessToken = "";
             Helpers.Settings.ExpireTokenDate = DateTime.Now.AddYears(-10);
         }
+
+
+
+
+
     }
 }
