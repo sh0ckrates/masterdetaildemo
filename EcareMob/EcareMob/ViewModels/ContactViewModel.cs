@@ -127,9 +127,9 @@ namespace EcareMob.ViewModels
             PhoneNumber = "210-9118500";
             SiteAddress = "https://www.mybmwbank.gr";
             EmailAddress = "infosf@bmw.gr";
-            //WebsiteIconTappedCommand = new DelegateCommand(async () => await GoToWebsite());
-            //PhoneIconTappedCommand = new DelegateCommand(async () => await MakePhoneCall());
-            //EmailIconTappedCommand = new DelegateCommand(async () => await SendMail());
+            WebsiteIconTappedCommand = new DelegateCommand(async () => await GoToWebsite());
+            PhoneIconTappedCommand = new DelegateCommand(async () => await MakePhoneCall());
+            EmailIconTappedCommand = new DelegateCommand(async () => await SendMail());
         }
 
 
