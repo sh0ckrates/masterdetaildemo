@@ -69,14 +69,14 @@ namespace EcareMob.ViewModels
                     MenuType = MenuType.Contact,
                     FColor = Color.Gray
                 },
-                // new MyMenuItem()
-                //{
-                //    Title = "'Εξοδος",
-                //    Uri = "/Login",
-                //    Icon = "ic_exit_to_app_black_24dp.png",
-                //    MenuType = MenuType.Logout,
-                //    FColor = Color.Gray
-                //}
+                 new MyMenuItem()
+                {
+                    Title = "'Εξοδος",
+                    Uri = "/Login",
+                    Icon = "ic_exit_to_app_black_24dp.png",
+                    MenuType = MenuType.Logout,
+                    FColor = Color.Gray
+                }
 
             };
 
