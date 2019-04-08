@@ -706,5 +706,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bmw_splash2.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

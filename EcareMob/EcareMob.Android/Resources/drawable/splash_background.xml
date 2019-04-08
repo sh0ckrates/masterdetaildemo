@@ -2,7 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
   <item>
     <bitmap
-      android:src="@drawable/bmw_splash"
+      android:src="@drawable/bmw_splash2"
       android:tileMode="disabled"
       android:scaleType="centerInside"
       android:adjustViewBounds="true" />
