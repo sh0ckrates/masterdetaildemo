@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcareMob.Views.Profile"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    Title="{Binding Title}"
+    mvvm:ViewModelLocator.AutowireViewModel="True">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                HorizontalOptions="CenterAndExpand"
+                Text="{Binding UserProfile.FullName}"
+                VerticalOptions="CenterAndExpand" />
+
+
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+
+
+<!--<TableView Intent="Settings">
+    <TableRoot>
+        <TableSection Title="Getting Started">
+            <ViewCell>
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="bulb.png" />
+                    <Label Text="left"
+                           TextColor="#f35e20" />
+                    <Label Text="right"
+                           HorizontalOptions="EndAndExpand"
+                           TextColor="#503026" />
+                </StackLayout>
+            </ViewCell>
+        </TableSection>
+    </TableRoot>
+</TableView>-->

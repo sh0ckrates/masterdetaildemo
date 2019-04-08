@@ -42,10 +42,10 @@
             HorizontalTextAlignment="Center"
             Text="{Binding WelcomeMessage1}" />
         <Label
+            Margin="20"
             HorizontalOptions="Center"
             HorizontalTextAlignment="Center"
-            Text="{Binding WelcomeMessage2}" 
-            Margin="20"/>
+            Text="{Binding WelcomeMessage2}" />
 
         <Entry
             HorizontalTextAlignment="Center"
@@ -68,7 +68,10 @@
             HorizontalOptions="Center"
             Text="{Binding LoginMessage}"
             VerticalOptions="Center" />
-
     </StackLayout>
 </ContentPage>
+
+
+
+
 

@@ -9,6 +9,7 @@ namespace EcareMob.Clients
     {
         Task<User> GetAuthentication(User user);
         Task<User> GetUserInfo(int id);
+        Task<UserProfile> GetUserProfile(int id);
 
 
 

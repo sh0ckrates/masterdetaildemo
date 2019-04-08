@@ -40,7 +40,7 @@ namespace EcareMob.Models
         {
             Contact,
             Settings,
-            About,
+            Profile,
             Logout
         }
 }

@@ -45,14 +45,14 @@ namespace EcareMob.ViewModels
             NavigateToCommand = new DelegateCommand<MyMenuItem>(Navigate);
             MenuItems = new ObservableCollection<MyMenuItem>
             {
-                //new MyMenuItem()
-                //{
-                //    Title = "Το προφίλ μου",
-                //    Uri = "NavigationPage/Invetories",
-                //    Icon = "ic_store_mall_directory_black_24dp.png",
-                //    MenuType = MenuType.Inventory,
-                //    FColor = Color.Gray
-                //},
+                new MyMenuItem()
+                {
+                    Title = "Το προφίλ μου",
+                    Uri = "NavigationPage/Profile",
+                    Icon = "profile_49_navigation_default.png",
+                    MenuType = MenuType.Profile,
+                    FColor = Color.Gray
+                },
                 //new MyMenuItem()
                 //{
                 //    Title = "Αλλαγή κωδικού",

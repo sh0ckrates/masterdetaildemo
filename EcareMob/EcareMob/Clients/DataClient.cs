@@ -35,6 +35,14 @@ namespace EcareMob.Clients
         }
 
 
+        public async Task<UserProfile> GetUserProfile(int id)
+        {
+            var uri = $"{Settings.ServerUrl}user/userprofile?id={id}";
+            return await _requestprovider.GetSingleItemRequest<UserProfile>(uri);
+        }
+
+
+
 
 
         //public async Task<List<OpenInvetory>> GetOpenInventories()
