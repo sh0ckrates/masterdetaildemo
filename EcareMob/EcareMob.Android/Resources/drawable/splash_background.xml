@@ -5,6 +5,7 @@
       android:src="@drawable/bmw_splash2"
       android:tileMode="disabled"
       android:scaleType="centerInside"
-      android:adjustViewBounds="true" />
+      android:adjustViewBounds="true" 
+      />
   </item>
 </layer-list>

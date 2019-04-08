@@ -65,7 +65,7 @@ namespace EcareMob.ViewModels
                 {
                     Title = "Επικοινωνία",
                     Uri = "NavigationPage/Contact",
-                    Icon = "ic_info_outline_black_24dp.png",
+                    Icon = "phone_24_communication_default.png",
                     MenuType = MenuType.Contact,
                     FColor = Color.Gray
                 },
@@ -73,7 +73,7 @@ namespace EcareMob.ViewModels
                 {
                     Title = "'Εξοδος",
                     Uri = "/Login",
-                    Icon = "ic_exit_to_app_black_24dp.png",
+                    Icon = "logout_24_actions_default.png",
                     MenuType = MenuType.Logout,
                     FColor = Color.Gray
                 }
