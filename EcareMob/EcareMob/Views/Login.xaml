@@ -1,23 +1,73 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EcareMob.Views.Login"
-             WidthRequest="20" Padding="20"
-             Title="{Binding Title}">
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="{Binding WelcomeMessage}" HorizontalOptions="Center" />
-        <Entry Text="{Binding Username}" Placeholder="Όνομα Χρήστη" HorizontalTextAlignment ="Center" />
-        <Entry Text="{Binding Password}" IsPassword="True" Placeholder="Κωδικός Πρόσβασης" HorizontalTextAlignment ="Center"/>
+<ContentPage
+    x:Class="EcareMob.Views.Login"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xamanimation="clr-namespace:Xamanimation;assembly=Xamanimation"
+    Title="{Binding Title}"
+    Padding="20"
+    WidthRequest="20">
 
-        <Button 
-                Text="Είσοδος"
-                Command="{Binding LoginCommand}"
-                HorizontalOptions="FillAndExpand"
-                StyleId="SignInButton"
-                TextColor="White"
-                BackgroundColor="#92a2bd">
-        </Button>
-        <Label Text="{Binding LoginMessage}" VerticalOptions="Center"  HorizontalOptions="Center"/>
+
+    <!--<Page.Resources>
+        <ResourceDictionary>
+    -->
+    <!--<xamanimation:FadeToAnimation
+                x:Key="FadeToAnimation"
+                Opacity="0"
+                Target="{x:Reference FadeBox}"
+                Duration="2000" />-->
+    <!--
+
+            <xamanimation:StoryBoard x:Key="StoryBoard" Target="{x:Reference FadeBox}">
+                <xamanimation:ScaleToAnimation Scale="2" />
+                <xamanimation:ShakeAnimation />
+            </xamanimation:StoryBoard>
+        </ResourceDictionary>
+    </Page.Resources>-->
+
+    <StackLayout HorizontalOptions="CenterAndExpand">
+        <Image
+            x:Name="LoginLogo"
+            HeightRequest="120"
+            HorizontalOptions="Center"
+            Source="MyBmw"
+            VerticalOptions="End"
+            WidthRequest="150" />
+
+
+
+        <Label
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Text="{Binding WelcomeMessage1}" />
+        <Label
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Text="{Binding WelcomeMessage2}" 
+            Margin="20"/>
+
+        <Entry
+            HorizontalTextAlignment="Center"
+            Placeholder="Όνομα Χρήστη"
+            Text="{Binding Username}" />
+        <Entry
+            HorizontalTextAlignment="Center"
+            IsPassword="True"
+            Placeholder="Κωδικός Πρόσβασης"
+            Text="{Binding Password}" />
+
+        <Button
+            BackgroundColor="#92a2bd"
+            Command="{Binding LoginCommand}"
+            HorizontalOptions="FillAndExpand"
+            StyleId="SignInButton"
+            Text="Είσοδος"
+            TextColor="White" />
+        <Label
+            HorizontalOptions="Center"
+            Text="{Binding LoginMessage}"
+            VerticalOptions="Center" />
 
     </StackLayout>
 </ContentPage>

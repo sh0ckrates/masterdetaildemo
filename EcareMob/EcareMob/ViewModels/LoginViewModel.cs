@@ -13,6 +13,7 @@ using Prism.Services;
 using Thesis.Invetory.Shared.Services;
 using EcareMob.Clients;
 using EcareMob.Models;
+using Xamanimation;
 
 namespace EcareMob.ViewModels
 {
@@ -42,14 +43,22 @@ namespace EcareMob.ViewModels
         }
 
 
-        private string _welcomeMessage;
+        private string _welcomeMessage1;
 
-        public string WelcomeMessage
+        public string WelcomeMessage1
         {
-            get { return _welcomeMessage; }
-            set { SetProperty(ref _welcomeMessage, value); }
+            get { return _welcomeMessage1; }
+            set { SetProperty(ref _welcomeMessage1, value); }
         }
 
+
+        private string _welcomeMessage2;
+
+        public string WelcomeMessage2
+        {
+            get { return _welcomeMessage2; }
+            set { SetProperty(ref _welcomeMessage2, value); }
+        }
 
 
         private string _loginMessage;
@@ -66,9 +75,6 @@ namespace EcareMob.ViewModels
 
         public DelegateCommand LoginCommand { get; set; }
 
-
-
-
         public LoginViewModel(INavigationService navigationService, IAuthenticationService authenticator, IUserDialogs dialog, IDataClient dataClient)
             : base(navigationService, dialog)
         {
@@ -76,7 +82,10 @@ namespace EcareMob.ViewModels
             _authenticator = authenticator;
             _dataClient = dataClient;
             Title = "Bmw Customer Web Portal";
-            WelcomeMessage = "Καλώς ήρθατε στην προσωπική σας σελίδα στο portal πελατών της BMW Financial Services!";
+            WelcomeMessage1 = "Καλώς ήρθατε στον προσωπικό σας χώρο στο portal πελατών της BMW Financial Services!";
+            WelcomeMessage2 = "Με τη νέα αυτή υπηρεσία έχετε άμεση πρόσβαση στα στοιχεία του συμβολαίου σας εύκολα, γρήγορα και με ασφάλεια, 24 ώρες το 24ωρο.";
+
+
 
             LoginCommand = new DelegateCommand(async () => await Login());
 
