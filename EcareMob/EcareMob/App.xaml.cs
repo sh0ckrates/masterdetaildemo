@@ -71,8 +71,7 @@ namespace EcareMob
 
 
 
-
-        public static void SetLogoutSettings()
+    public static void SetLogoutSettings()
         {
             Helpers.Settings.RefreshToken = "";
             Helpers.Settings.AccessToken = "";

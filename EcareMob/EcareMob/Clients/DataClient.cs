@@ -37,7 +37,7 @@ namespace EcareMob.Clients
 
         public async Task<UserProfile> GetUserProfile(int id)
         {
-            var uri = $"{Settings.ServerUrl}user/userprofile?id={id}";
+            var uri = $"{Settings.ServerUrl}main/userprofile?userId={id}";
             return await _requestprovider.GetSingleItemRequest<UserProfile>(uri);
         }
 

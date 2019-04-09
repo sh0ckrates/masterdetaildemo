@@ -10,6 +10,9 @@
   <color name="window_background">#F5F5F5</color>
   <color name="highlight">#f2f8ff</color>
 
+
+  <color name="label_text">#a8a28e</color>
+
   <color name="standard_button">#a8a28e</color>
-  <color name="priority_Button">#92a2bd</color>
+  <color name="priority">#92a2bd</color>
 </resources>

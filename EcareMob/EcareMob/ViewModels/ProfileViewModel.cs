@@ -41,6 +41,8 @@ namespace EcareMob.ViewModels
 
             Title = "Το Προφίλ μου";
             LoadCommand = new DelegateCommand<UserProfile>(async (x) => await LoadProfile());
+            Task.Run(async () => { await LoadProfile(); }).Wait();
+
         }
 
 
@@ -51,6 +53,20 @@ namespace EcareMob.ViewModels
             {
                 UserProfile = await _dataClient.GetUserProfile(Settings.UserId);
             });
+        }
+
+
+        public override async void OnNavigatedTo(NavigationParameters parameters)
+        {
+
+            //if (parameters.ContainsKey(NavigationParams.PartId))
+            //{
+            //    _partId = parameters.GetValue<string>(NavigationParams.PartId);
+            //}
+
+            await LoadProfile();
+
+            base.OnNavigatedTo(parameters);
         }
 
     }
