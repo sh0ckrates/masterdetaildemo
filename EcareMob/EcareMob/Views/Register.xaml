@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcareMob.Views.Register"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="{Binding Title}"
+    Padding="20"
+    WidthRequest="20">
+
+    <StackLayout HorizontalOptions="CenterAndExpand">
+        <Image
+            x:Name="RegisterPic"
+            HeightRequest="150"
+            HorizontalOptions="Center"
+            Source="img6"
+            VerticalOptions="End"
+            WidthRequest="400" />
+
+
+
+        <Label
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Text="{Binding PageLabel}" />
+
+        <Entry
+            HorizontalTextAlignment="Center"
+            Placeholder="Αριθμός συμβολαίου"
+            Text="{Binding ContractNo}" />
+        <Entry
+            HorizontalTextAlignment="Center"
+            Placeholder="ΑΦΜ"
+            Text="{Binding Vat}" />
+
+        <Entry
+            HorizontalTextAlignment="Center"
+            Keyboard="Email"
+            Placeholder="Διεύθυνση ηλ. ταχυδρομείου"
+            Text="{Binding Email}" />
+
+        <Entry
+            HorizontalTextAlignment="Center"
+            IsPassword="True"
+            Placeholder="Κωδικός Πρόσβασης"
+            Text="{Binding Password}" />
+        <Entry
+            HorizontalTextAlignment="Center"
+            IsPassword="True"
+            Placeholder="Επιβεβαίωση κωδικού"
+            Text="{Binding RepeatPassword}" />
+
+        <Button
+            BackgroundColor="#92a2bd"
+            Command="{Binding RegisterCommand}"
+            HorizontalOptions="FillAndExpand"
+            StyleId="SignInButton"
+            Text="Εγγραφή"
+            TextColor="White" />
+        <Label
+            HorizontalOptions="Center"
+            Text="{Binding RegisterMessage}"
+            VerticalOptions="Center" />
+    </StackLayout>
+</ContentPage>

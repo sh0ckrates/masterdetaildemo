@@ -72,6 +72,8 @@ namespace EcareMob.ViewModels
             }
         }
 
+        
+        public DelegateCommand GotoRegisterCommand { get; set; }
 
         public DelegateCommand LoginCommand { get; set; }
 
@@ -88,7 +90,7 @@ namespace EcareMob.ViewModels
 
 
             LoginCommand = new DelegateCommand(async () => await Login());
-
+            GotoRegisterCommand = new DelegateCommand(async () => await NavigationService.NavigateAsync("/Register"));
         }
 
 

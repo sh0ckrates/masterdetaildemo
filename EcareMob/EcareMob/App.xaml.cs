@@ -64,6 +64,7 @@ namespace EcareMob
             containerRegistry.RegisterForNavigation<Login, LoginViewModel>();
             containerRegistry.RegisterForNavigation<Contact, ContactViewModel>();
             containerRegistry.RegisterForNavigation<Profile, ProfileViewModel>();
+            containerRegistry.RegisterForNavigation<Register, RegisterViewModel>();
 
 
 
@@ -71,7 +72,7 @@ namespace EcareMob
 
 
 
-    public static void SetLogoutSettings()
+        public static void SetLogoutSettings()
         {
             Helpers.Settings.RefreshToken = "";
             Helpers.Settings.AccessToken = "";

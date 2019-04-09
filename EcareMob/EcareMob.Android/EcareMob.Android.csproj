@@ -748,5 +748,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\profile_49_navigation_default.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\img6.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

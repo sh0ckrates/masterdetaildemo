@@ -19,6 +19,7 @@
 
 
 
+
             <Thickness x:Key="SmallPadding">4</Thickness>
             <Thickness x:Key="MediumPadding">8</Thickness>
             <Thickness x:Key="StandardPadding">16</Thickness>
@@ -124,6 +125,14 @@
                 x:Key="SectionLabelFontFamily"
                 x:TypeArguments="x:String"
                 Android="sans-serif-light" />
+
+
+            <Style x:Key="StandardBtn" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{DynamicResource PriorityButton}" />
+            </Style>
+
+
+
 
             <Style x:Key="AboutTitleStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="{DynamicResource SettingsGroupTextSize}" />

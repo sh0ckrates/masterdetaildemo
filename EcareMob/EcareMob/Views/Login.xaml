@@ -9,23 +9,6 @@
     WidthRequest="20">
 
 
-    <!--<Page.Resources>
-        <ResourceDictionary>
-    -->
-    <!--<xamanimation:FadeToAnimation
-                x:Key="FadeToAnimation"
-                Opacity="0"
-                Target="{x:Reference FadeBox}"
-                Duration="2000" />-->
-    <!--
-
-            <xamanimation:StoryBoard x:Key="StoryBoard" Target="{x:Reference FadeBox}">
-                <xamanimation:ScaleToAnimation Scale="2" />
-                <xamanimation:ShakeAnimation />
-            </xamanimation:StoryBoard>
-        </ResourceDictionary>
-    </Page.Resources>-->
-
     <StackLayout HorizontalOptions="CenterAndExpand">
         <Image
             x:Name="LoginLogo"
@@ -64,11 +47,43 @@
             StyleId="SignInButton"
             Text="Είσοδος"
             TextColor="White" />
+
         <Label
             HorizontalOptions="Center"
             Text="{Binding LoginMessage}"
             VerticalOptions="Center" />
+
+        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+
+
+            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                <Label
+                    Style="{DynamicResource EvolveListTextStyle}"
+                    Text="Είστε νέος χρήστης;"
+                    TextColor="{DynamicResource DetailTextColor}"
+                    VerticalTextAlignment="Center" />
+            </StackLayout>
+            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                <Label
+                    FontAttributes="Bold"
+                    Style="{DynamicResource EvolveListTextStyleBold}"
+                    Text="Γραφτείτε τώρα!"
+                    TextColor="{StaticResource Primary}"
+                    VerticalTextAlignment="Center">
+                    <Label.Font>
+                        <OnPlatform
+                            x:TypeArguments="Font"
+                            Android="Semibold"
+                            iOS="Semibold" />
+                    </Label.Font>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GotoRegisterCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </StackLayout>
     </StackLayout>
+
 </ContentPage>
 
 
