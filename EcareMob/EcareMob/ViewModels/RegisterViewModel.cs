@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net.Mail;
 using Acr.UserDialogs;
 using EcareMob.Clients;
 using EcareMob.Helpers;
@@ -9,6 +7,9 @@ using EcareMob.Services;
 using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using EcareMob.Models;
 
 namespace EcareMob.ViewModels
 {
@@ -96,74 +97,117 @@ namespace EcareMob.ViewModels
 
 
 
-            //RegisterCommand = new DelegateCommand(async () => await Register());
 
+            RegisterCommand = new DelegateCommand(async () => await Register());
         }
-
-
 
 
         private async Task Register()
         {
-
-            await Pass(async () =>
+            if (await ValidateForm())
             {
-                RegisterMessage = "";
-                if (await Authenticate())
+                await Pass(async () =>
                 {
-                    RegisterMessage = "Success";
-                    
-                    //Settings.UserName = Username;
+                    RegisterMessage = "";
 
-
-                    var res = await _dataClient.GetUserInfo(Settings.UserId);
-
-                    if (res != null)
+                    var registerModel = new RegisterModel
                     {
-                        Settings.FullName = res.FullName;
-                        Settings.CharismaCode = res.CharismaCode;
+                        Password = Encryption.Encrypt(Password , Settings.EncKey) ,
+                        Email = Email,
+                        VatNumber = VatNumber,
+                        ContractNumber = ContractNo
+                    };
+
+                    var res = await _dataClient.RegisterNewUser(registerModel);
+
+                    if (res != null && !res.Success)
+                    {
+                        RegisterMessage = res.Message;
+                    }
+
+                    if (res != null && res.Success)
+                    {
+                        var goToLogin = await Dialog.ConfirmAsync(res.Message, "Επιτυχής εγγραφή", "Σύνδεση", "Επιστροφή");
+                        if (goToLogin)
+                        {
+                            await NavigationService.NavigateAsync("/Login");
+                        }
                     }
 
 
-                    await NavigationService.NavigateAsync("/RootPage/NavigationPage/MainPage");
+                    //await NavigationService.NavigateAsync("/Login");
 
-                }
-                else
+                });
+            }
+        }
+
+        private async Task<bool> ValidateForm()
+        {
+            if (Password != null && Email != null && VatNumber != null && ContractNo != null)
+            {
+                if (!(await IsValidEmail(Email)))
                 {
-                    RegisterMessage = "Login_Failed";
+                    RegisterMessage = "Παρακαλώ εισάγετε μία έγκυρη διεύθυνση email";
+                    return false;
                 }
 
-            });
-
+                if (await ValidatePassword(Password, RepeatPassword))
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                RegisterMessage = "Παρακαλώ συμπληρώστε όλα τα πεδία";
+            }
+            return false;
         }
 
 
 
 
 
-        async Task<bool> Authenticate()
+
+
+        private async Task<bool> ValidatePassword(string password, string repeatedPassword)
         {
-            bool success = false;
+            if (password != repeatedPassword)
+            {
+                RegisterMessage = "Oι κωδικοί δεν ταιριάζουν";
+                return false;
+            }
+
+            string passwordRegex = "^(?=.*\\d+)(?=.*[a-zA-Z])[0-9a-zA-Z!@#$%]{8,}$";
+            var matchPass = Regex.Match(password, passwordRegex, RegexOptions.IgnoreCase);
+            var matchConfirmPass = Regex.Match(repeatedPassword, passwordRegex, RegexOptions.IgnoreCase);
+            if (matchPass.Success)
+            {
+                return true;
+            }
+            else
+            {
+                RegisterMessage = "O κωδικός πρέπει να αποτελέιται απο 8 χαρακτήρες, με τουλάχιστον 1 αριθμό";
+                return false;
+            }
+
+        }
+
+
+        public async Task<bool> IsValidEmail(string emailaddress)
+        {
             try
             {
-                var encryptedPassword = Encryption.Encrypt(Password, Settings.EncKey);
+                MailAddress m = new MailAddress(emailaddress);
 
-                //success = await _authenticator.AuthenticateAsync(Username, encryptedPassword, _dataClient);
-                if (success)
-                {
-                    //RaisePropertyChanged(ProfileImage);
-
-                    //await _dialog.AlertAsync("Login Successfull", "Alert", "OK");
-
-                }
-
+                return true;
             }
-            catch (Exception ex)
+            catch (FormatException)
             {
-                await _dialog.AlertAsync(ex.Message, "Alert", "OK");
+                return false;
             }
-            return success;
         }
+
+
 
     }
 }

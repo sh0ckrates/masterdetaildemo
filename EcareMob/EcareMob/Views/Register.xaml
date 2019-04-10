@@ -3,6 +3,7 @@
     x:Class="EcareMob.Views.Register"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xaml="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     Title="{Binding Title}"
     Padding="20"
     WidthRequest="20">
@@ -30,12 +31,12 @@
         <Entry
             HorizontalTextAlignment="Center"
             Placeholder="ΑΦΜ"
-            Text="{Binding Vat}" />
+            Text="{Binding VatNumber}" />
 
         <Entry
             HorizontalTextAlignment="Center"
             Keyboard="Email"
-            Placeholder="Διεύθυνση ηλ. ταχυδρομείου"
+            Placeholder="Email"
             Text="{Binding Email}" />
 
         <Entry
@@ -53,12 +54,19 @@
             BackgroundColor="#92a2bd"
             Command="{Binding RegisterCommand}"
             HorizontalOptions="FillAndExpand"
-            StyleId="SignInButton"
             Text="Εγγραφή"
+            TextColor="White" />
+        <Button
+            BackgroundColor="#a8a28e"
+            Command="{xaml:NavigateTo '/Login'}"
+            HorizontalOptions="FillAndExpand"
+            StyleId="SignInButton"
+            Text="Επιστροφή"
             TextColor="White" />
         <Label
             HorizontalOptions="Center"
             Text="{Binding RegisterMessage}"
+            TextColor="DarkRed"
             VerticalOptions="Center" />
     </StackLayout>
 </ContentPage>

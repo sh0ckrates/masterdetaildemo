@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EcareMob.Clients.Base;
 using EcareMob.Helpers;
 using EcareMob.Models;
+using EcareMob.Views;
 
 
 namespace EcareMob.Clients
@@ -40,6 +41,18 @@ namespace EcareMob.Clients
             var uri = $"{Settings.ServerUrl}main/userprofile?userId={id}";
             return await _requestprovider.GetSingleItemRequest<UserProfile>(uri);
         }
+
+
+
+        public async Task<GenericResponse> RegisterNewUser(RegisterModel registerModel)
+        {
+            var uri = $"{Settings.ServerUrl}user/register";
+            return await _requestprovider.PostRequest<GenericResponse, RegisterModel>(uri, registerModel);
+        }
+
+
+
+
 
 
 

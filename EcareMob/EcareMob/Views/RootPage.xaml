@@ -21,7 +21,7 @@
                     Grid.Row="0"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
-                    Color="#444444" />
+                    Color="#666666" />
 
                 <StackLayout
                     Grid.Row="0"

@@ -131,7 +131,10 @@
                 <Setter Property="BackgroundColor" Value="{DynamicResource PriorityButton}" />
             </Style>
 
-
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="#444444" />
+                <Setter Property="BarTextColor" Value="#ffffff" />
+            </Style>
 
 
             <Style x:Key="AboutTitleStyle" TargetType="Label">

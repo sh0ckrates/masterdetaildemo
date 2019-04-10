@@ -10,7 +10,7 @@ namespace EcareMob.Clients
         Task<User> GetAuthentication(User user);
         Task<User> GetUserInfo(int id);
         Task<UserProfile> GetUserProfile(int id);
-
+        Task<GenericResponse> RegisterNewUser(RegisterModel registerModel);
 
 
         //Task<List<OpenInvetory>> GetOpenInventories();
