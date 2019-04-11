@@ -8,71 +8,85 @@
     mvvm:ViewModelLocator.AutowireViewModel="True">
 
     <ContentPage.Content>
-        <Grid Padding="15,15">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.5*" />
-                <ColumnDefinition Width="0.5*" />
-            </Grid.ColumnDefinitions>
+        <StackLayout Padding="0,20,0,0">
+            <Label
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="{Binding UserProfile.FullName}" />
+            <Grid Padding="15,15">
+                <Grid.RowDefinitions>
+                    <!--<RowDefinition Height="Auto" />-->
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="0.5*" />
+                </Grid.ColumnDefinitions>
 
-            <StackLayout Grid.Row="0" Grid.ColumnSpan="2">
-                <Label Style="{DynamicResource ControlEditUpperLabelTextStyle}" Text="Όνομα" />
-                <Entry
-                    IsReadOnly="True"
-                    Text="{Binding UserProfile.FullName}"
-                    TextColor="#000000" />
-            </StackLayout>
+                <StackLayout
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2">
+                    <Label
+                        FontAttributes="Bold"
+                        Style="{DynamicResource ControlEditUpperLabelTextStyle}"
+                        Text="Διεύθυνση (κατοικίας)" />
+                    <Editor
+                        FontSize="Small"
+                        IsReadOnly="True"
+                        Text="{Binding UserProfile.HomeAddress}" />
+                </StackLayout>
 
-            <StackLayout
-                Grid.Row="1"
-                Grid.Column="0"
-                Grid.ColumnSpan="2">
-                <Label Style="{DynamicResource ControlEditUpperLabelTextStyle}" Text="Διεύθυνση (κατοικίας)" />
-                <Editor
-                    FontSize="Small"
-                    IsReadOnly="True"
-                    Text="{Binding UserProfile.HomeAddress}" />
-            </StackLayout>
-
-            <StackLayout
-                Grid.Row="2"
-                Grid.Column="0"
-                Grid.ColumnSpan="2">
-                <Label Style="{DynamicResource ControlEditUpperLabelTextStyle}" Text="Διεύθυνση (αλληλογραφίας)" />
-                <Editor
-                    FontSize="Small"
-                    IsReadOnly="True"
-                    Text="{Binding UserProfile.MailAddress}" />
-            </StackLayout>
-            <StackLayout
-                Grid.Row="3"
-                Grid.Column="0"
-                Grid.ColumnSpan="2">
-                <Label Style="{DynamicResource ControlEditUpperLabelTextStyle}" Text="Τηλέφωνο (κατοικίας)" />
-                <Entry IsReadOnly="true" Text="{Binding UserProfile.PhoneNumber}" />
-            </StackLayout>
-            <StackLayout
-                Grid.Row="4"
-                Grid.Column="0"
-                Grid.ColumnSpan="2">
-                <Label Style="{DynamicResource ControlEditUpperLabelTextStyle}" Text="Τηλέφωνο (κινητό)" />
-                <Entry IsReadOnly="True" Text="{Binding UserProfile.MobileNumber}" />
-            </StackLayout>
-            <StackLayout
-                Grid.Row="5"
-                Grid.Column="0"
-                Grid.ColumnSpan="2">
-                <Label Style="{DynamicResource ControlEditUpperLabelTextStyle}" Text="Διεύθυνση ηλεκτρονικού ταχυδρομείου" />
-                <Entry IsReadOnly="True" Text="{Binding UserProfile.Email}" />
-            </StackLayout>
-        </Grid>
+                <StackLayout
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2">
+                    <Label
+                        FontAttributes="Bold"
+                        Style="{DynamicResource ControlEditUpperLabelTextStyle}"
+                        Text="Διεύθυνση (αλληλογραφίας)" />
+                    <Editor
+                        FontSize="Small"
+                        IsReadOnly="True"
+                        Text="{Binding UserProfile.MailAddress}" />
+                </StackLayout>
+                <StackLayout
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2">
+                    <Label
+                        FontAttributes="Bold"
+                        Style="{DynamicResource ControlEditUpperLabelTextStyle}"
+                        Text="Τηλέφωνο (κατοικίας)" />
+                    <Entry IsReadOnly="true" Text="{Binding UserProfile.PhoneNumber}" />
+                </StackLayout>
+                <StackLayout
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2">
+                    <Label
+                        FontAttributes="Bold"
+                        Style="{DynamicResource ControlEditUpperLabelTextStyle}"
+                        Text="Τηλέφωνο (κινητό)" />
+                    <Entry IsReadOnly="True" Text="{Binding UserProfile.MobileNumber}" />
+                </StackLayout>
+                <StackLayout
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2">
+                    <Label
+                        FontAttributes="Bold"
+                        Style="{DynamicResource ControlEditUpperLabelTextStyle}"
+                        Text="Διεύθυνση ηλεκτρονικού ταχυδρομείου" />
+                    <Entry IsReadOnly="True" Text="{Binding UserProfile.Email}" />
+                </StackLayout>
+            </Grid>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
 

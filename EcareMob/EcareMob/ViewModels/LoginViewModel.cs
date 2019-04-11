@@ -119,7 +119,7 @@ namespace EcareMob.ViewModels
 
                     //App.IsLoggedIn = true;
                     //await NavigationService.NavigateAsync("/RootPage/NavigationPage/MainPage");
-                    await NavigationService.NavigateAsync("/RootPage/NavigationPage/MainPage");
+                    await NavigationService.NavigateAsync("/RootPage/NavigationPage/Contact");
 
                 }
                 else
