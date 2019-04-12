@@ -53,14 +53,14 @@ namespace EcareMob.ViewModels
                     MenuType = MenuType.Profile,
                     FColor = Color.Gray
                 },
-                //new MyMenuItem()
-                //{
-                //    Title = "Test",
-                //    Uri = "/RootPage/NavigationPage/Test",
-                //    Icon = "profile_49_navigation_default.png",
-                //    MenuType = MenuType.Profile,
-                //    FColor = Color.Gray
-                //},
+                new MyMenuItem()
+                {
+                    Title = "Τα συμβόλαιά μου",
+                    Uri = "/RootPage/NavigationPage/Contracts",
+                    Icon = "chapters_49_navigation_default.png",
+                    MenuType = MenuType.Contracts,
+                    FColor = Color.Gray
+                },
                 //new MyMenuItem()
                 //{
                 //    Title = "Αλλαγή κωδικού",
@@ -73,7 +73,7 @@ namespace EcareMob.ViewModels
                 {
                     Title = "Επικοινωνία",
                     Uri = "/RootPage/NavigationPage/Contact",
-                    Icon = "phone_24_communication_default.png",
+                    Icon = "phone_49_communication_default.png",
                     MenuType = MenuType.Contact,
                     FColor = Color.Gray
                 },
@@ -81,7 +81,7 @@ namespace EcareMob.ViewModels
                 {
                     Title = "'Εξοδος",
                     Uri = "/Login",
-                    Icon = "logout_24_actions_default.png",
+                    Icon = "logout_49_actions_default.png",
                     MenuType = MenuType.Logout,
                     FColor = Color.Gray
                 }

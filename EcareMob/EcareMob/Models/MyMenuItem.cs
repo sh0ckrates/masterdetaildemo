@@ -41,6 +41,7 @@ namespace EcareMob.Models
             Contact,
             Settings,
             Profile,
+            Contracts,
             Logout
         }
 }
