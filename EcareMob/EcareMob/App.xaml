@@ -132,7 +132,7 @@
             </Style>
 
             <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="#444444" />
+                <Setter Property="BarBackgroundColor" Value="#92a2bd" />
                 <Setter Property="BarTextColor" Value="#ffffff" />
             </Style>
 

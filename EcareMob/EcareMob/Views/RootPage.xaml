@@ -7,6 +7,7 @@
     xmlns:customControls="clr-namespace:EcareMob.CustomControls;assembly=EcareMob"
     xmlns:local="clr-namespace:EcareMob.Views;assembly=EcareMob"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:xaml="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     Title="Root Page"
     prism:ViewModelLocator.AutowireViewModel="True">
 
@@ -21,7 +22,7 @@
                     Grid.Row="0"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
-                    Color="#666666" />
+                    Color="#bac4d3" />
 
                 <StackLayout
                     Grid.Row="0"
@@ -32,13 +33,13 @@
                         HorizontalOptions="Start"
                         Style="{DynamicResource EvolveDetailTextStyleBold}"
                         Text="Bmw Customer Mobile Portal"
-                        TextColor="White"
+                        TextColor="Black"
                         VerticalOptions="EndAndExpand" />
                     <Label
                         HorizontalOptions="Start"
                         Style="{DynamicResource EvolveDetailTextStyle}"
                         Text="{Binding FullName}"
-                        TextColor="White"
+                        TextColor="Black"
                         VerticalOptions="EndAndExpand" />
                 </StackLayout>
                 <ListView
@@ -68,7 +69,19 @@
                                         Style="{DynamicResource MenuTextStyle}"
                                         Text="{Binding Title}"
                                         VerticalOptions="Center" />
+
+                                    <!--<Button
+                                        Command="{xaml:NavigateTo '/RootPage/NavigationPage/Contact'}"
+                                        Style="{DynamicResource MenuTextStyle}"
+                                        Text="Test"
+                                        VerticalOptions="Center" />
+                                    <Button
+                                        Command="{xaml:NavigateTo '/RootPage/NavigationPage/Profile'}"
+                                        Style="{DynamicResource MenuTextStyle}"
+                                        Text="Test"
+                                        VerticalOptions="Center" />-->
                                 </StackLayout>
+
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>

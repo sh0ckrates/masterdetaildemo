@@ -115,9 +115,9 @@ namespace EcareMob.ViewModels
         public ContactViewModel(INavigationService navigationService, IAuthenticationService authenticator, IUserDialogs dialog, IDataClient dataClient)
             : base(navigationService, dialog)
         {
-            _dialog = dialog;
-            _authenticator = authenticator;
-            _dataClient = dataClient;
+            //_dialog = dialog;
+            //_authenticator = authenticator;
+            //_dataClient = dataClient;
             Title = "Επικοινωνία";
             ContactTitle = "BMW Financial Services";
             ContactText = "Επικοινωνήστε με το Τμήμα Εξυπηρέτησης Πελατών.Κάθε μέρα στη διάθεσή σας για οποιαδήποτε ερώτηση!";
@@ -160,5 +160,8 @@ namespace EcareMob.ViewModels
                 emailMessenger.SendEmail(EmailAddress);
             }
         }
+
+
+
     }
 }

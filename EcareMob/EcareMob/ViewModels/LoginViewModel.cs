@@ -89,7 +89,9 @@ namespace EcareMob.ViewModels
 
 
 
-            LoginCommand = new DelegateCommand(async () => await Login());
+            LoginCommand = new DelegateCommand(async () => await Login(), LoginCommandCanExecute)
+                .ObservesProperty(() => Username)
+                .ObservesProperty(() => Password); 
             GotoRegisterCommand = new DelegateCommand(async () => await NavigationService.NavigateAsync("/Register"));
         }
 
@@ -101,6 +103,7 @@ namespace EcareMob.ViewModels
 
             await Pass(async () =>
             {
+                IsBusy = true;
                 LoginMessage = "";
                 if (await Authenticate())
                 {
@@ -119,14 +122,14 @@ namespace EcareMob.ViewModels
 
                     //App.IsLoggedIn = true;
                     //await NavigationService.NavigateAsync("/RootPage/NavigationPage/MainPage");
-                    await NavigationService.NavigateAsync("/RootPage/NavigationPage/Contact");
+                    await NavigationService.NavigateAsync("/RootPage/NavigationPage/Profile");
 
                 }
                 else
                 {
-                    LoginMessage = "Login_Failed";
+                    LoginMessage = "Login Failed";
                 }
-
+                IsBusy = false;
             });
 
         }
@@ -158,6 +161,18 @@ namespace EcareMob.ViewModels
             }
             return success;
         }
+
+
+
+        private bool LoginCommandCanExecute() =>
+            !string.IsNullOrWhiteSpace(Username) && !string.IsNullOrWhiteSpace(Password) && !IsBusy;
+
+
+        //public override async void OnNavigatingTo(NavigationParameters parameters)
+        //{
+        //    //await InitDb();
+        //    await Login();
+        //}
 
 
     }

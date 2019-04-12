@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcareMob.Views.Test"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xaml="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                HorizontalOptions="CenterAndExpand"
+                Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" />
+            <Button
+                BackgroundColor="#a8a28e"
+                Command="{xaml:NavigateTo '/RootPage/NavigationPage/Contact'}"
+                HorizontalOptions="FillAndExpand"
+                StyleId="SignInButton"
+                Text="Επιστροφή"
+                TextColor="White" />
+            <Button
+                BackgroundColor="#a8a28e"
+                Command="{xaml:NavigateTo '/RootPage/NavigationPage/Profile'}"
+                HorizontalOptions="FillAndExpand"
+                StyleId="SignInButton"
+                Text="Επιστροφή"
+                TextColor="White" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

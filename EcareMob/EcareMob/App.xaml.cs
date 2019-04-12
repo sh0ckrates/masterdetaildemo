@@ -65,6 +65,7 @@ namespace EcareMob
             containerRegistry.RegisterForNavigation<Contact, ContactViewModel>();
             containerRegistry.RegisterForNavigation<Profile, ProfileViewModel>();
             containerRegistry.RegisterForNavigation<Register, RegisterViewModel>();
+            containerRegistry.RegisterForNavigation<Test>();
 
 
 

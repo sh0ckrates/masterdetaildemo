@@ -54,13 +54,11 @@
             Text="Είσοδος"
             TextColor="White" />
 
-        <Label
-            HorizontalOptions="Center"
-            Text="{Binding LoginMessage}"
-            VerticalOptions="Center" />
 
-        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-
+        <StackLayout
+            Padding="0,20,0,0"
+            HorizontalOptions="FillAndExpand"
+            Orientation="Horizontal">
 
             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
                 <Label
@@ -69,6 +67,8 @@
                     TextColor="{DynamicResource DetailTextColor}"
                     VerticalTextAlignment="Center" />
             </StackLayout>
+
+
             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
                 <Label
                     FontAttributes="Bold"
@@ -87,6 +87,26 @@
                     </Label.GestureRecognizers>
                 </Label>
             </StackLayout>
+        </StackLayout>
+
+        <StackLayout
+            Grid.Row="1"
+            Padding="16,0"
+            HorizontalOptions="Center"
+            Orientation="Horizontal"
+            VerticalOptions="Center">
+            <ActivityIndicator IsRunning="{Binding IsBusy}">
+                <ActivityIndicator.Color>
+                    <OnPlatform x:TypeArguments="Color" Android="{StaticResource Accent}" />
+                </ActivityIndicator.Color>
+            </ActivityIndicator>
+        </StackLayout>
+        <StackLayout>
+            <Label
+                HorizontalOptions="Center"
+                Style="{DynamicResource EvolveListItemTextStyle}"
+                Text="{Binding LoginMessage}"
+                VerticalOptions="Center" />
         </StackLayout>
     </StackLayout>
 

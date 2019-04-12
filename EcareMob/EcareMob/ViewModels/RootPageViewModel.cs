@@ -48,11 +48,19 @@ namespace EcareMob.ViewModels
                 new MyMenuItem()
                 {
                     Title = "Το προφίλ μου",
-                    Uri = "NavigationPage/Profile",
+                    Uri = "/RootPage/NavigationPage/Profile",
                     Icon = "profile_49_navigation_default.png",
                     MenuType = MenuType.Profile,
                     FColor = Color.Gray
                 },
+                //new MyMenuItem()
+                //{
+                //    Title = "Test",
+                //    Uri = "/RootPage/NavigationPage/Test",
+                //    Icon = "profile_49_navigation_default.png",
+                //    MenuType = MenuType.Profile,
+                //    FColor = Color.Gray
+                //},
                 //new MyMenuItem()
                 //{
                 //    Title = "Αλλαγή κωδικού",
@@ -64,7 +72,7 @@ namespace EcareMob.ViewModels
                  new MyMenuItem()
                 {
                     Title = "Επικοινωνία",
-                    Uri = "NavigationPage/Contact",
+                    Uri = "/RootPage/NavigationPage/Contact",
                     Icon = "phone_24_communication_default.png",
                     MenuType = MenuType.Contact,
                     FColor = Color.Gray
