@@ -3,15 +3,109 @@
     x:Class="EcareMob.Views.Contracts"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behavior="clr-namespace:EcareMob.Behavior;assembly=EcareMob"
+    xmlns:converters="clr-namespace:EcareMob.Converters;assembly=EcareMob"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     Title="{Binding Title}"
     prism:ViewModelLocator.AutowireViewModel="True">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBooleanConverter x:Key="boolInverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label
-                HorizontalOptions="CenterAndExpand"
-                Text="List Of My Contracts!"
-                VerticalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <AbsoluteLayout
+                Grid.Row="0"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <ListView
+                    x:Name="ListViewInvetories"
+                    behavior:ItemTappedAttached.Command="{Binding NavigateToScanCommand}"
+                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    BackgroundColor="White"
+                    CachingStrategy="RecycleElement"
+                    HasUnevenRows="true"
+                    IsPullToRefreshEnabled="{Binding IsBusy, Converter={StaticResource boolInverter}}"
+                    IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                    IsVisible="{Binding IsBusy, Converter={StaticResource boolInverter}}"
+                    ItemsSource="{Binding MyContracts}"
+                    RefreshCommand="{Binding LoadCommand}"
+                    SeparatorColor="{StaticResource ListSeparator}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="{DynamicResource StandardPadding}" ColumnSpacing="{StaticResource StandardSpacing}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="30" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Style="{DynamicResource EvolveListItemTextStyle}"
+                                        StyleId="SessionItem"
+                                        Text="{Binding ContractNo}" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Style="{DynamicResource EvolveListItemTextStyle}"
+                                        StyleId="SessionItem"
+                                        Text="{Binding VehicleDescr}" />
+                                    <Label
+                                        Grid.Row="2"
+                                        Style="{DynamicResource EvolveListItemDetailTextStyle}"
+                                        StyleId="SpeakerNames"
+                                        Text="{Binding FirstRate, StringFormat='Δόση {0:F0} €'}" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <StackLayout
+                    AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    IsVisible="{Binding IsBusy}">
+                    <StackLayout.Orientation>
+                        <OnPlatform x:TypeArguments="StackOrientation" iOS="Horizontal" />
+                    </StackLayout.Orientation>
+                    <ActivityIndicator IsRunning="{Binding IsBusy}">
+                        <ActivityIndicator.Color>
+                            <OnPlatform x:TypeArguments="Color" Android="{StaticResource Accent}" />
+                        </ActivityIndicator.Color>
+                    </ActivityIndicator>
+                    <Label HorizontalOptions="Center" Text="Loading " />
+                </StackLayout>
+                <StackLayout
+                    Padding="16,0"
+                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    BackgroundColor="White"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding NoItemsFound}"
+                    VerticalOptions="CenterAndExpand">
+                    <Label
+                        FontSize="22"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        IsVisible="{Binding IsBusy, Converter={StaticResource boolInverter}}"
+                        Text="{Binding NoItemsFoundMessage}"
+                        TextColor="{StaticResource LabelSectionText}"
+                        VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+            </AbsoluteLayout>
+        </Grid>
     </ContentPage.Content>
+
 </ContentPage>

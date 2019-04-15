@@ -47,18 +47,18 @@ namespace EcareMob.ViewModels
             {
                 new MyMenuItem()
                 {
-                    Title = "Το προφίλ μου",
-                    Uri = "/RootPage/NavigationPage/Profile",
-                    Icon = "profile_49_navigation_default.png",
-                    MenuType = MenuType.Profile,
-                    FColor = Color.Gray
-                },
-                new MyMenuItem()
-                {
                     Title = "Τα συμβόλαιά μου",
                     Uri = "/RootPage/NavigationPage/Contracts",
                     Icon = "chapters_49_navigation_default.png",
                     MenuType = MenuType.Contracts,
+                    FColor = Color.Gray
+                },
+                new MyMenuItem()
+                {
+                    Title = "Το προφίλ μου",
+                    Uri = "/RootPage/NavigationPage/Profile",
+                    Icon = "profile_49_navigation_default.png",
+                    MenuType = MenuType.Profile,
                     FColor = Color.Gray
                 },
                 //new MyMenuItem()

@@ -13,7 +13,7 @@ using EcareMob.Clients.Base;
 
 namespace EcareMob.ViewModels
 {
-    public abstract class ViewModelBase : BindableBase
+    public abstract class ViewModelBase : BindableBase, INavigationAware, IConfirmNavigation, IDestructible
     {
 
         const string RootUriPrependText = "/";
@@ -69,19 +69,11 @@ namespace EcareMob.ViewModels
             }
             this.NavigationService = navigationService;
             Dialog = dialog;
-            NoItemsFoundMessage = "No items Found";
+            NoItemsFoundMessage = "Δεν βρέθηκαν αποτελέσματα";
             LoadingMessage = LoadingMessageConstant;
         }
 
-        /// <summary>
-        /// Determines whether this instance accepts being navigated away from.  This method is invoked by Prism before a navigation operation and is a member of IConfirmNavigation.
-        /// </summary>
-        /// <param name="parameters">The navigation parameters.</param>
-        /// <returns><c>True</c> if navigation can continue, <c>False</c> if navigation is not allowed to continue</returns>
-        public virtual bool CanNavigate(NavigationParameters parameters)
-        {
-            return true;
-        }
+
 
         /// <summary>
         /// Determines whether this instance can execute the NavigateAbsoluteCommand.
@@ -191,29 +183,7 @@ namespace EcareMob.ViewModels
             await this.NavigationService.NavigateAsync(uri, useModalNavigation: false);
         }
 
-        /// <summary>
-        /// Invoked by Prism after navigating away from viewmodel's page.
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        public virtual void OnNavigatedFrom(NavigationParameters parameters)
-        {
-        }
 
-        /// <summary>
-        /// Invoked by Prism after navigating to the viewmodel's page.
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        public virtual void OnNavigatedTo(NavigationParameters parameters)
-        {
-        }
-
-        /// <summary>
-        /// Invoked by Prism before navigating to the viewmodel's page. Deriving classes can use this method to invoke async loading of data instead of waiting for the OnNavigatedTo method to be invoked.
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        public virtual void OnNavigatingTo(NavigationParameters parameters)
-        {
-        }
 
         private bool _noitemsfound;
         private string _noitemsfoundmessage;
@@ -305,30 +275,22 @@ namespace EcareMob.ViewModels
         }
 
 
-
-
-
-
-
-        //--Inerfaces Implemented--//
-        public void OnNavigatedFrom(INavigationParameters parameters)
+        ////--Inerfaces Implemented--//
+        public virtual void OnNavigatedFrom(INavigationParameters parameters)
         {
-            throw new NotImplementedException();
         }
 
-        public void OnNavigatedTo(INavigationParameters parameters)
+        public virtual void OnNavigatedTo(INavigationParameters parameters)
         {
-            throw new NotImplementedException();
         }
 
-        public void OnNavigatingTo(INavigationParameters parameters)
+        public virtual void OnNavigatingTo(INavigationParameters parameters)
         {
-            throw new NotImplementedException();
         }
 
-        public bool CanNavigate(INavigationParameters parameters)
+        public virtual bool CanNavigate(INavigationParameters parameters)
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

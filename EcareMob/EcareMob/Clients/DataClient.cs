@@ -19,7 +19,7 @@ namespace EcareMob.Clients
         }
 
 
-        #region Inventory
+        
 
         public async Task<User> GetAuthentication(User user)
         {
@@ -52,7 +52,11 @@ namespace EcareMob.Clients
 
 
 
-
+        public async Task<List<Contract>> GetMyContracts(string charismaCode , string vat)
+        {
+            var uri = $"{Settings.ServerUrl}main/contracts?charismaCode={charismaCode}&vat={vat}";
+            return await _requestprovider.GetMultipleItemsRequest<Contract>(uri);
+        }
 
 
 
@@ -136,6 +140,6 @@ namespace EcareMob.Clients
         //}
 
         //inventories/scans/{id}
-        #endregion
+
     }
 }

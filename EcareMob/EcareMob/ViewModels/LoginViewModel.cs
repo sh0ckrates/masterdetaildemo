@@ -118,6 +118,7 @@ namespace EcareMob.ViewModels
                     {
                         Settings.FullName = res.FullName;
                         Settings.CharismaCode = res.CharismaCode;
+                        Settings.Vat = res.Vat;
                     }
 
                     //App.IsLoggedIn = true;
@@ -168,10 +169,10 @@ namespace EcareMob.ViewModels
             !string.IsNullOrWhiteSpace(Username) && !string.IsNullOrWhiteSpace(Password) && !IsBusy;
 
 
-        //public override async void OnNavigatingTo(NavigationParameters parameters)
+       // public override async void OnNavigatingTo(INavigationParameters parameters)
         //{
-        //    //await InitDb();
-        //    await Login();
+            //await InitDb();
+            //await Login();
         //}
 
 

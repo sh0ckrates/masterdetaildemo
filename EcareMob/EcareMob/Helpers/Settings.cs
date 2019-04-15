@@ -49,6 +49,10 @@ namespace EcareMob.Helpers
         private const string CharismaCodeKey = "charisma_code";
         private static readonly string CharismaCodeDefault = "";
 
+
+        private const string VatCodeKey = "vat_code";
+        private static readonly string VatCodeDefault = "";
+
         private const string UserIdKey = "userid_key";
         private static readonly int UserIdDefault = -1;
 
@@ -97,6 +101,14 @@ namespace EcareMob.Helpers
             get { return AppSettings.GetValueOrDefault(CharismaCodeKey, CharismaCodeDefault); }
             set { AppSettings.AddOrUpdateValue(CharismaCodeKey, value); }
         }
+
+
+        public static string Vat
+        {
+            get { return AppSettings.GetValueOrDefault(VatCodeKey, VatCodeDefault); }
+            set { AppSettings.AddOrUpdateValue(VatCodeKey, value); }
+        }
+
 
         public static string FullName
         {

@@ -56,21 +56,21 @@ namespace EcareMob.ViewModels
         }
 
 
-        public override async void OnNavigatingTo(NavigationParameters parameters)
-        {
+        //public override async void OnNavigatingTo(INavigationParameters parameters)
+        //{
 
-            //if (parameters.ContainsKey(NavigationParams.PartId))
-            //{
-            //    _partId = parameters.GetValue<string>(NavigationParams.PartId);
-            //}
+        //    //if (parameters.ContainsKey(NavigationParams.PartId))
+        //    //{
+        //    //    _partId = parameters.GetValue<string>(NavigationParams.PartId);
+        //    //}
 
-            await LoadProfile();
+        //    await LoadProfile();
 
-            base.OnNavigatingTo(parameters);
-        }
+        //   // base.OnNavigatingTo(parameters);
+        //}
 
 
-        public override async void OnNavigatedTo(NavigationParameters parameters)
+        public override async void OnNavigatedTo(INavigationParameters parameters)
         {
 
             //if (parameters.ContainsKey(NavigationParams.PartId))

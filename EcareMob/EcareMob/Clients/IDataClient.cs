@@ -11,7 +11,7 @@ namespace EcareMob.Clients
         Task<User> GetUserInfo(int id);
         Task<UserProfile> GetUserProfile(int id);
         Task<GenericResponse> RegisterNewUser(RegisterModel registerModel);
-
+        Task<List<Contract>> GetMyContracts(string charismaCode, string vat);
 
         //Task<List<OpenInvetory>> GetOpenInventories();
         //Task<BarcodeStatus> CheckBarCode(string barcode);
