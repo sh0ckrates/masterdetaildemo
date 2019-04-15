@@ -25,17 +25,17 @@ namespace EcareMob.ViewModels
                 if (value == _selectedMenuItem)
                     return;
                 _selectedMenuItem = value;
-                _selectedMenuItem.FColor = Color.LightSlateGray;//(Color)Application.Current.Resources["Primary"];
-                UpdateMenuItems(_selectedMenuItem);
+                //_selectedMenuItem.FColor = Color.LightSlateGray;//(Color)Application.Current.Resources["Primary"];
+                //UpdateMenuItems(_selectedMenuItem);
                 RaisePropertyChanged();
             }
         }
 
-        private void UpdateMenuItems(MyMenuItem selectedMenuItem)
-        {
-            var theRest = MenuItems.Where(c => c.MenuType != selectedMenuItem.MenuType);
-            theRest.ToList().ForEach(c => c.FColor = Color.Gray);
-        }
+        //private void UpdateMenuItems(MyMenuItem selectedMenuItem)
+        //{
+        //    var theRest = MenuItems.Where(c => c.MenuType != selectedMenuItem.MenuType);
+        //    theRest.ToList().ForEach(c => c.FColor = Color.Gray);
+        //}
 
         public string FullName => Settings.FullName;
 
@@ -88,7 +88,7 @@ namespace EcareMob.ViewModels
 
             };
 
-            SelectedMenuItem = MenuItems.FirstOrDefault(x => x.MenuType == MenuType.Contact);
+            //SelectedMenuItem = MenuItems.FirstOrDefault(x => x.MenuType == MenuType.Contact);
         }
 
         private void Navigate(MyMenuItem item)
@@ -102,6 +102,7 @@ namespace EcareMob.ViewModels
                     break;
                     ;
             }
+           // item.FColor = Color.Bisque;
             NavigationService.NavigateAsync(item.Uri);
         }
 
