@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcareMob.Views.History"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dataGrid1="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
+    xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    Title="{Binding Title}"
+    mvvm:ViewModelLocator.AutowireViewModel="True">
+
+
+    <dataGrid1:DataGrid
+        BorderColor="#CCCCCC"
+        HeaderBackground="#E0E6F8"
+        HeaderHeight="50"
+        HeaderLabelStyle="s"
+        IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+        ItemsSource="{Binding HistoryRows}"
+        RowHeight="70"
+        SelectionEnabled="True">
+        <dataGrid1:DataGrid.Columns>
+            <dataGrid1:DataGridColumn
+                Title="Ημ/νία αποστολής"
+                Width="1*"
+                PropertyName="DateApplied" />
+            <dataGrid1:DataGridColumn
+                Title="Αριθμός συμβολαίου"
+                Width="1*"
+                PropertyName="ContractNo" />
+            <dataGrid1:DataGridColumn
+                Title="Περιγραφή αιτήματος"
+                Width="2*"
+                PropertyName="Description" />
+            <dataGrid1:DataGridColumn
+                Title="Αριθμός αίτησης"
+                Width="1*"
+                PropertyName="TicketNo" />
+        </dataGrid1:DataGrid.Columns>
+        <dataGrid1:DataGrid.RowsBackgroundColorPalette>
+            <dataGrid1:PaletteCollection>
+                <Color>#F2F2F2</Color>
+                <Color>#FFFFFF</Color>
+            </dataGrid1:PaletteCollection>
+        </dataGrid1:DataGrid.RowsBackgroundColorPalette>
+        <dataGrid1:DataGrid.Resources>
+            <ResourceDictionary />
+        </dataGrid1:DataGrid.Resources>
+    </dataGrid1:DataGrid>
+
+
+</ContentPage>

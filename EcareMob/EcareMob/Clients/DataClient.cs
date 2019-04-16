@@ -50,7 +50,11 @@ namespace EcareMob.Clients
             return await _requestprovider.PostRequest<GenericResponse, RegisterModel>(uri, registerModel);
         }
 
-
+        public async Task<List<Models.History>> GetHistory(string vat)
+        {
+            var uri = $"{Settings.ServerUrl}main/history?vat={vat}";
+            return await _requestprovider.GetMultipleItemsRequest<Models.History>(uri);
+        }
 
         public async Task<List<Contract>> GetMyContracts(string charismaCode , string vat)
         {

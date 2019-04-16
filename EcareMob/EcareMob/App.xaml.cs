@@ -29,7 +29,11 @@ namespace EcareMob
         {
 
 
-
+            this.MainPage = GetHistory();
+        }
+        public static Page GetHistory()
+        {
+            return new History();
         }
 
         public App(IPlatformInitializer initializer = null) : base(initializer)
@@ -65,6 +69,7 @@ namespace EcareMob
             containerRegistry.RegisterForNavigation<Contact, ContactViewModel>();
             containerRegistry.RegisterForNavigation<Profile, ProfileViewModel>();
             containerRegistry.RegisterForNavigation<Register, RegisterViewModel>();
+            containerRegistry.RegisterForNavigation<History>();
             containerRegistry.RegisterForNavigation<Contracts, ContractsViewModel>();
 
             containerRegistry.RegisterForNavigation<Test>();

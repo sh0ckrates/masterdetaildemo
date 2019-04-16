@@ -55,6 +55,14 @@ namespace EcareMob.ViewModels
                 },
                 new MyMenuItem()
                 {
+                    Title = "Ιστορικό",
+                    Uri = "/RootPage/NavigationPage/History",
+                    Icon = "outlook_49_communication_default.png",
+                    MenuType = MenuType.Profile,
+                    FColor = Color.Gray
+                },
+                new MyMenuItem()
+                {
                     Title = "Το προφίλ μου",
                     Uri = "/RootPage/NavigationPage/Profile",
                     Icon = "profile_49_navigation_default.png",
