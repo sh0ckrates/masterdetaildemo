@@ -69,7 +69,7 @@ namespace EcareMob.ViewModels.GeneralInfo
 
             });
         }
-
+         
 
 
 
