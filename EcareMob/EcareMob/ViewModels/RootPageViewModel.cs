@@ -69,6 +69,14 @@ namespace EcareMob.ViewModels
                     MenuType = MenuType.Profile,
                     FColor = Color.Gray
                 },
+                new MyMenuItem()
+                {
+                    Title = "Γενικές Πληροφορίες",
+                    Uri = "/RootPage/NavigationPage/GeneralInfo",
+                    Icon = "info_49_communication_default.png",
+                    MenuType = MenuType.Profile,
+                    FColor = Color.Gray
+                },
                 //new MyMenuItem()
                 //{
                 //    Title = "Αλλαγή κωδικού",

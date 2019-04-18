@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcareMob.Views.GeneralInfo.VehicleSuspectionCheck"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    Title="{Binding Title}"
+    Padding="20"
+    mvvm:ViewModelLocator.AutowireViewModel="True">
+    <ContentPage.Content>
+        <StackLayout>
+            <Image
+                x:Name="generalinfoPic"
+                Margin="0,15,0,20"
+                HorizontalOptions="Center"
+                Source="generalinfo"
+                VerticalOptions="End" />
+
+            <Label Text="Επιλέξτε τη μάρκα του αυτοκινήτου σας και βρείτε συμβουλές και προτάσεις για τη σωστή χρήση του." />
+
+
+
+            <AbsoluteLayout>
+                <StackLayout Padding="20,10" Spacing="0">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        LineBreakMode="TailTruncation"
+                        Style="{DynamicResource AboutTitleStyle}"
+                        Text="ΒΜW" />
+                </StackLayout>
+                <AbsoluteLayout
+                    AbsoluteLayout.LayoutBounds="0.95, 0.5, AutoSize, AutoSize"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    HeightRequest="44"
+                    WidthRequest="44">
+                    <AbsoluteLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BmwΙconTappedCommand}" NumberOfTapsRequired="1" />
+                    </AbsoluteLayout.GestureRecognizers>
+                    <AbsoluteLayout.Children>
+                        <Image
+                            AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+                            AbsoluteLayout.LayoutFlags="PositionProportional"
+                            HeightRequest="30"
+                            Source="download_49_actions_default"
+                            WidthRequest="30" />
+                    </AbsoluteLayout.Children>
+                </AbsoluteLayout>
+            </AbsoluteLayout>
+
+            <StackLayout>
+                <Label />
+                <BoxView
+                    BackgroundColor="DarkSeaGreen"
+                    HeightRequest="0.8"
+                    HorizontalOptions="FillAndExpand" />
+                <Label />
+            </StackLayout>
+
+            <AbsoluteLayout>
+                <StackLayout Padding="20,10" Spacing="0">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        LineBreakMode="TailTruncation"
+                        Style="{DynamicResource AboutTitleStyle}"
+                        Text="MINI" />
+
+                </StackLayout>
+                <AbsoluteLayout
+                    AbsoluteLayout.LayoutBounds="0.95, 0.5, AutoSize, AutoSize"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    HeightRequest="44"
+                    WidthRequest="44">
+                    <AbsoluteLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding MiniIconTappedCommand}" NumberOfTapsRequired="1" />
+                    </AbsoluteLayout.GestureRecognizers>
+                    <AbsoluteLayout.Children>
+                        <Image
+                            AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+                            AbsoluteLayout.LayoutFlags="PositionProportional"
+                            HeightRequest="30"
+                            Source="download_49_actions_default"
+                            WidthRequest="30" />
+                    </AbsoluteLayout.Children>
+                </AbsoluteLayout>
+            </AbsoluteLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

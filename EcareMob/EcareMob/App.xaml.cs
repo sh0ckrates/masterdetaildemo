@@ -6,7 +6,9 @@ using EcareMob.Services;
 using Prism;
 using Prism.Ioc;
 using EcareMob.ViewModels;
+using EcareMob.ViewModels.GeneralInfo;
 using EcareMob.Views;
+using EcareMob.Views.GeneralInfo;
 using Plugin.Iconize;
 using Prism.DryIoc;
 using Xamarin.Forms;
@@ -69,8 +71,15 @@ namespace EcareMob
             containerRegistry.RegisterForNavigation<Contact, ContactViewModel>();
             containerRegistry.RegisterForNavigation<Profile, ProfileViewModel>();
             containerRegistry.RegisterForNavigation<Register, RegisterViewModel>();
-            containerRegistry.RegisterForNavigation<History>();
+            containerRegistry.RegisterForNavigation<History, HistoryViewModel>();
             containerRegistry.RegisterForNavigation<Contracts, ContractsViewModel>();
+
+            containerRegistry.RegisterForNavigation<GeneralInfo, GeneralInfoViewModel>();
+            containerRegistry.RegisterForNavigation<VehicleSuspectionCheck, VehicleSuspectionCheckViewModel>();
+            containerRegistry.RegisterForNavigation<PaymentMethods, PaymentMethodsViewModel>();
+            containerRegistry.RegisterForNavigation<EndOfTermProcess, EndOfTermProcessViewModel>();
+
+
 
             containerRegistry.RegisterForNavigation<Test>();
 

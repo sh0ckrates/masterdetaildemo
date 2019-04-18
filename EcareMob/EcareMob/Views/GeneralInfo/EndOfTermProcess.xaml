@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcareMob.Views.GeneralInfo.EndOfTermProcess"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    Title="{Binding Title}"
+    mvvm:ViewModelLocator.AutowireViewModel="True">
+    <ContentPage.Content>
+        <StackLayout Margin="20" Spacing="10">
+            <WebView VerticalOptions="FillAndExpand">
+                <WebView.Source>
+                    <HtmlWebViewSource Html="{Binding EndOfTermHtml}" />
+                </WebView.Source>
+            </WebView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
