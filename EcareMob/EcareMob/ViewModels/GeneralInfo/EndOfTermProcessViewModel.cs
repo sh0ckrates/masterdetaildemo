@@ -43,7 +43,7 @@ namespace EcareMob.ViewModels.GeneralInfo
             _authenticator = authenticator;
             _dataClient = dataClient;
 
-            Title = "Διαδικασία Λήξης Συμβολάιου";
+            Title = "ΔΙΑΔΙΚΑΣΙΑ ΛΗΞΗΣ ΣΥΜΒΟΛΑΙΟΥ";
 
 
 

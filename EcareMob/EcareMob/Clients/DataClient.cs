@@ -41,7 +41,11 @@ namespace EcareMob.Clients
             var uri = $"{Settings.ServerUrl}main/userprofile?userId={id}";
             return await _requestprovider.GetSingleItemRequest<UserProfile>(uri);
         }
-
+        public async Task<ResourceReturnModel> GetResource(string key, string lang)
+        {
+            var uri = $"{Settings.ServerUrl}main/resource?key={key}&lang={lang}";
+            return await _requestprovider.GetSingleItemRequest<ResourceReturnModel>(uri);
+        }
 
 
         public async Task<GenericResponse> RegisterNewUser(RegisterModel registerModel)
@@ -49,6 +53,13 @@ namespace EcareMob.Clients
             var uri = $"{Settings.ServerUrl}user/register";
             return await _requestprovider.PostRequest<GenericResponse, RegisterModel>(uri, registerModel);
         }
+
+        public async Task<GenericResponse> ChangePassword(ChangePasswordModel model)
+        {
+            var uri = $"{Settings.ServerUrl}user/changepassword";
+            return await _requestprovider.PostRequest<GenericResponse, ChangePasswordModel>(uri, model);
+        }
+
 
         public async Task<List<Models.History>> GetHistory(string vat)
         {

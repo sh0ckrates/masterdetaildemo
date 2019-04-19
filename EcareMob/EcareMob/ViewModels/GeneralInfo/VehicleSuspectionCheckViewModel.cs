@@ -33,7 +33,7 @@ namespace EcareMob.ViewModels.GeneralInfo
                 _authenticator = authenticator;
                 _dataClient = dataClient;
 
-                Title = "Έλεγχος Κατάστασης Οχήματος";
+                Title = "ΕΛΕΓΧΟΣ ΚΑΤΑΣΤΑΣΗΣ ΟΧΗΜΑΤΟΣ";
 
                 MiniIconTappedCommand = new DelegateCommand(async () => await DownloadPdfFile("mini"));
                 BmwΙconTappedCommand = new DelegateCommand(async () => await DownloadPdfFile("bmw"));
@@ -44,29 +44,6 @@ namespace EcareMob.ViewModels.GeneralInfo
         }
 
 
-        //private async Task Load()
-        //{
-        //    await Pass(async () =>
-        //    {
-
-
-        //    });
-        //}
-
-
-
-
-        //public override async void OnNavigatingTo(INavigationParameters parameters)
-        //{
-
-        //    //if (parameters.ContainsKey(NavigationParams.PartId))
-        //    //{
-        //    //    _partId = parameters.GetValue<string>(NavigationParams.PartId);
-        //    //}
-
-        //    await Load();
-
-        //}
 
 
         private async Task DownloadPdfFile(string brand)

@@ -24,6 +24,7 @@ namespace EcareMob.ViewModels
         private readonly IDataClient _dataClient;
 
         public UserProfile UserProfile { get; set; }
+        public DelegateCommand GotoChangePasswordCommand { get; set; }
 
         private string _title;
         public string Title
@@ -43,6 +44,8 @@ namespace EcareMob.ViewModels
             LoadCommand = new DelegateCommand<UserProfile>(async (x) => await LoadProfile());
             Task.Run(async () => { await LoadProfile(); }).Wait();
 
+
+            GotoChangePasswordCommand = new DelegateCommand(async () => await NavigationService.NavigateAsync("ChangePassword"));
         }
 
 

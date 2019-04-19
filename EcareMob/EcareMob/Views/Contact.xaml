@@ -9,25 +9,20 @@
     Title="{Binding Title}"
     prism:ViewModelLocator.AutowireViewModel="True">
 
-    <!--<StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label
-            HorizontalOptions="Center"
-            HorizontalTextAlignment="Center"
-            Text="Welcome to Contact Page!!!" />
 
-
-    </StackLayout>-->
     <ScrollView>
         <StackLayout Spacing="0">
 
-            <Image
-                HeightRequest="120"
-                HorizontalOptions="Center"
-                Source="MyBmw"
-                VerticalOptions="End"
-                WidthRequest="150" />
+            <StackLayout>
+                <Image
+                    HeightRequest="120"
+                    HorizontalOptions="Center"
+                    Source="MyBmw"
+                    VerticalOptions="End"
+                    WidthRequest="150" />
+            </StackLayout>
 
-            <AbsoluteLayout>
+            <StackLayout Padding="0,0,0,10">
                 <Label
                     AbsoluteLayout.LayoutBounds="0, 0, 1, 5"
                     AbsoluteLayout.LayoutFlags="All"
@@ -35,31 +30,40 @@
                     HorizontalTextAlignment="Center"
                     Text="BMW Financial Services"
                     VerticalTextAlignment="Center" />
-            </AbsoluteLayout>
-            <AbsoluteLayout>
+            </StackLayout>
+
+            <StackLayout
+                Padding="6"
+                AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                Orientation="Horizontal">
                 <Label
-                    AbsoluteLayout.LayoutBounds="50,20,280,90"
                     HorizontalTextAlignment="Center"
                     LineBreakMode="WordWrap"
-                    Text="Επικοινωνήστε με το Τμήμα Εξυπηρέτησης Πελατών.Κάθε μέρα στη διάθεσή σας για οποιαδήποτε ερώτηση!"
-                    VerticalTextAlignment="Center" />
-            </AbsoluteLayout>
-            <AbsoluteLayout>
+                    Text="Επικοινωνήστε με το Τμήμα Εξυπηρέτησης Πελατών. Κάθε μέρα στη διάθεσή σας για οποιαδήποτε ερώτηση!"
+                    TextColor="Black"
+                    VerticalOptions="Center" />
+            </StackLayout>
+            <StackLayout Padding="0,10,0,10">
                 <Label
-                    AbsoluteLayout.LayoutBounds="50,10,280,20"
+                    AbsoluteLayout.LayoutBounds="0, 0, 1, 5"
+                    AbsoluteLayout.LayoutFlags="All"
                     HorizontalTextAlignment="Center"
-                    LineBreakMode="WordWrap"
                     Text="Δευτέρα ως Παρασκευή"
+                    TextColor="Black"
                     VerticalTextAlignment="Center" />
-            </AbsoluteLayout>
-            <AbsoluteLayout>
+            </StackLayout>
+            <StackLayout Padding="0,10,0,10">
                 <Label
-                    AbsoluteLayout.LayoutBounds="50,20,280,30"
+                    AbsoluteLayout.LayoutBounds="0, 0, 1, 5"
+                    AbsoluteLayout.LayoutFlags="All"
                     HorizontalTextAlignment="Center"
-                    LineBreakMode="WordWrap"
                     Text="09:00-17:00"
+                    TextColor="Black"
                     VerticalTextAlignment="Center" />
-            </AbsoluteLayout>
+            </StackLayout>
+
+
             <AbsoluteLayout>
                 <StackLayout Padding="20,10" Spacing="0">
                     <Label

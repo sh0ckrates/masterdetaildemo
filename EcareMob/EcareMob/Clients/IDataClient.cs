@@ -10,7 +10,9 @@ namespace EcareMob.Clients
         Task<User> GetAuthentication(User user);
         Task<User> GetUserInfo(int id);
         Task<UserProfile> GetUserProfile(int id);
+        Task<ResourceReturnModel> GetResource(string key, string lang);
         Task<GenericResponse> RegisterNewUser(RegisterModel registerModel);
+        Task<GenericResponse> ChangePassword(ChangePasswordModel model);
         Task<List<Contract>> GetMyContracts(string charismaCode, string vat);
         Task<List<Models.History>> GetHistory(string vat);
 

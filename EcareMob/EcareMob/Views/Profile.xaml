@@ -86,11 +86,18 @@
                     <Entry IsReadOnly="True" Text="{Binding UserProfile.Email}" />
                 </StackLayout>
             </Grid>
+
+            <Button
+                Padding="10"
+                BackgroundColor="LightSteelBlue"
+                Command="{Binding GotoChangePasswordCommand}"
+                HeightRequest="50"
+                HorizontalOptions="Center"
+                Image="change_password1"
+                Text="Αλλαγη κωδικου προσβασης" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
-
-
 
 
 <!--<StackLayout>

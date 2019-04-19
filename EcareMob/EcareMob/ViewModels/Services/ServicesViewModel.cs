@@ -4,15 +4,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using EcareMob.Clients;
-using EcareMob.Helpers;
 using EcareMob.Services;
 using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
 
-namespace EcareMob.ViewModels.GeneralInfo
+namespace EcareMob.ViewModels.Services
 {
-    public class GeneralInfoViewModel : ViewModelBase
+    public class ServicesViewModel : ViewModelBase
     {
         private readonly IAuthenticationService _authenticator;
         private readonly IPageDialogService _dialogService;
@@ -27,14 +26,15 @@ namespace EcareMob.ViewModels.GeneralInfo
 
 
 
-        public GeneralInfoViewModel(INavigationService navigationService, IAuthenticationService authenticator, IUserDialogs dialog, IDataClient dataClient)
+        public ServicesViewModel(INavigationService navigationService, IAuthenticationService authenticator,
+            IUserDialogs dialog, IDataClient dataClient)
             : base(navigationService, dialog)
         {
             _dialog = dialog;
             _authenticator = authenticator;
             _dataClient = dataClient;
 
-            Title = "ΓΕΝΙΚΕΣ ΠΛΗΡΟΦΟΡΙΕΣ";
+            Title = "Υπηρεσίες";
 
 
 
@@ -49,10 +49,7 @@ namespace EcareMob.ViewModels.GeneralInfo
 
         private async Task Load()
         {
-            await Pass(async () =>
-            {
-
-            });
+            await Pass(async () => { });
         }
 
 
@@ -61,7 +58,5 @@ namespace EcareMob.ViewModels.GeneralInfo
             await Load();
             // base.OnNavigatedTo(parameters);
         }
-
-
     }
 }

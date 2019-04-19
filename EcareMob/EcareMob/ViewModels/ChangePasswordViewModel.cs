@@ -1,19 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Mail;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Acr.UserDialogs;
 using EcareMob.Clients;
 using EcareMob.Helpers;
+using EcareMob.Models;
 using EcareMob.Services;
 using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using EcareMob.Models;
 
 namespace EcareMob.ViewModels
 {
-    public class RegisterViewModel : ViewModelBase
+    public class ChangePasswordViewModel : ViewModelBase
     {
         private readonly IAuthenticationService _authenticator;
         private readonly IPageDialogService _dialogService;
@@ -38,11 +40,12 @@ namespace EcareMob.ViewModels
         }
 
 
-        private string _email;
-        public string Email
+        private string _previousPassword;
+
+        public string PreviousPassword
         {
-            get { return _email; }
-            set { SetProperty(ref _email, value); }
+            get { return _previousPassword; }
+            set { SetProperty(ref _previousPassword, value); }
         }
 
         private string _password;
@@ -72,96 +75,82 @@ namespace EcareMob.ViewModels
 
 
 
-        private string _registerMessage;
-        public string RegisterMessage
+        private string _changePassMessage;
+        public string ChangePassMessage
         {
-            get => _registerMessage;
+            get => _changePassMessage;
             set
             {
-                _registerMessage = value;
+                _changePassMessage = value;
                 RaisePropertyChanged();
             }
         }
 
 
-        public DelegateCommand RegisterCommand { get; set; }
+        public DelegateCommand ChangePasswordCommand { get; set; }
 
-        public RegisterViewModel(INavigationService navigationService, IAuthenticationService authenticator, IUserDialogs dialog, IDataClient dataClient)
+        public ChangePasswordViewModel(INavigationService navigationService, IAuthenticationService authenticator, IUserDialogs dialog, IDataClient dataClient)
             : base(navigationService, dialog)
         {
             _dialog = dialog;
             _authenticator = authenticator;
             _dataClient = dataClient;
-            Title = "Εγγραφή";
-            PageLabel = "Συμπληρώστε τα παρακάτω στοιχεία για την εγγραφή σας";
+            Title = "Αλλαγή Κωδικού Πρόσβασης";
+            PageLabel = "Συμπληρώστε τα παρακάτω στοιχεία για να αλλάξετε τον κωδικό πρόσβασής σας.";
 
-
-
-
-            RegisterCommand = new DelegateCommand(async () => await Register());
+            ChangePasswordCommand = new DelegateCommand(async () => await ChangePassword())
+                .ObservesProperty(() => RepeatPassword)
+                .ObservesProperty(() => PreviousPassword)
+                .ObservesProperty(() => Password); 
         }
 
 
-        private async Task Register()
+        private async Task ChangePassword()
         {
             if (await ValidateForm())
             {
                 await Pass(async () =>
                 {
-                    RegisterMessage = "";
+                    ChangePassMessage = "";
 
-                    var registerModel = new RegisterModel
+                    var newPassModel = new ChangePasswordModel()
                     {
-                        Password = Encryption.Encrypt(Password , Settings.EncKey) ,
-                        Email = Email,
-                        VatNumber = VatNumber,
-                        ContractNumber = ContractNo
+                        NewPassword = Encryption.Encrypt(Password, Settings.EncKey),
+                        UserId = Settings.UserId
                     };
 
-                    var res = await _dataClient.RegisterNewUser(registerModel);
+                    var res = await _dataClient.ChangePassword(newPassModel);
 
                     if (res != null && !res.Success)
                     {
-                        RegisterMessage = res.Message;
+                        ChangePassMessage = res.Message;
                     }
 
                     if (res != null && res.Success)
                     {
-                        await Dialog.AlertAsync(res.Message, "H εγγραφή σας ολοκληρώθηκε επιτυχώς!", "Σύνδεση");
+                        await Dialog.AlertAsync(res.Message, "Επιτυχής Αλλαγή Κωδικού", "Σύνδεση");
                         await NavigationService.NavigateAsync("/Login");
+
+                        //var goToLogin = await Dialog.ConfirmAsync(res.Message, "Επιτυχής Αλλαγή Κωδικού", "Σύνδεση", "Επιστροφή");
+                        //if (goToLogin)
+                        //{
+                        //    await NavigationService.NavigateAsync("/Login");
+                        //}
                     }
-
-
-                    //await NavigationService.NavigateAsync("/Login");
-
                 });
             }
         }
 
         private async Task<bool> ValidateForm()
         {
-            if (Password != null && Email != null && VatNumber != null && ContractNo != null)
+            if (Password != null &&  PreviousPassword != null && RepeatPassword != null)
             {
-                if (!(await IsValidEmail(Email)))
-                {
-                    RegisterMessage = "Παρακαλώ εισάγετε μία έγκυρη διεύθυνση email";
-                    return false;
-                }
+                return await ValidatePassword(Password, RepeatPassword);
+            }
 
-                if (await ValidatePassword(Password, RepeatPassword))
-                {
-                    return true;
-                }
-            }
-            else
-            {
-                RegisterMessage = "Παρακαλώ συμπληρώστε όλα τα πεδία";
-            }
+            ChangePassMessage = "Παρακαλώ συμπληρώστε όλα τα πεδία";
             return false;
         }
-
-
-
 
 
 
@@ -170,39 +159,27 @@ namespace EcareMob.ViewModels
         {
             if (password != repeatedPassword)
             {
-                RegisterMessage = "Oι κωδικοί δεν ταιριάζουν";
+                ChangePassMessage = "Oι κωδικοί δεν ταιριάζουν";
                 return false;
             }
 
             string passwordRegex = "^(?=.*\\d+)(?=.*[a-zA-Z])[0-9a-zA-Z!@#$%]{8,}$";
             var matchPass = Regex.Match(password, passwordRegex, RegexOptions.IgnoreCase);
             var matchConfirmPass = Regex.Match(repeatedPassword, passwordRegex, RegexOptions.IgnoreCase);
-            if (matchPass.Success)
+            if (matchPass.Success && matchConfirmPass.Success)
             {
                 return true;
             }
             else
             {
-                RegisterMessage = "O κωδικός πρέπει να αποτελέιται απο 8 χαρακτήρες, με τουλάχιστον 1 αριθμό";
+                ChangePassMessage = "O κωδικός πρέπει να αποτελέιται απο 8 χαρακτήρες, με τουλάχιστον 1 αριθμό";
                 return false;
             }
 
         }
 
 
-        public async Task<bool> IsValidEmail(string emailaddress)
-        {
-            try
-            {
-                MailAddress m = new MailAddress(emailaddress);
 
-                return true;
-            }
-            catch (FormatException)
-            {
-                return false;
-            }
-        }
 
 
 

@@ -5,16 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using EcareMob.Clients;
-using EcareMob.Helpers;
-using EcareMob.Models;
 using EcareMob.Services;
-using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
 
-namespace EcareMob.ViewModels.GeneralInfo
+namespace EcareMob.ViewModels.Services
 {
-    public class PaymentMethodsViewModel : ViewModelBase
+
+    public class FinancialProgarmViewModel : ViewModelBase
     {
         private readonly IAuthenticationService _authenticator;
         private readonly IPageDialogService _dialogService;
@@ -23,44 +21,48 @@ namespace EcareMob.ViewModels.GeneralInfo
         private IUserDialogs _dialog;
         private readonly IDataClient _dataClient;
 
-        private string _methodsHtml;
+        private string _financialHtml;
 
-        public string MethodsHtml
+        public string FinancialHtml
         {
-            get => _methodsHtml;
+            get => _financialHtml;
             set
             {
-                _methodsHtml = value;
+                _financialHtml = value;
                 RaisePropertyChanged();
             }
         }
 
-        public PaymentMethodsViewModel(INavigationService navigationService, IAuthenticationService authenticator, IUserDialogs dialog, IDataClient dataClient)
+        public FinancialProgarmViewModel(INavigationService navigationService, IAuthenticationService authenticator,
+            IUserDialogs dialog, IDataClient dataClient)
             : base(navigationService, dialog)
         {
             _dialog = dialog;
             _authenticator = authenticator;
             _dataClient = dataClient;
 
-            Title = "ΤΡΟΠΟΙ ΠΛΗΡΩΜΗΣ";
+            Title = "ΧΡΗΜΑΤΟΔΟΤΙΚΑ ΠΡΟΓΡΑΜΜΑΤΑ";
 
 
 
-            //LoadCommand = new DelegateCommand<UserProfile>(async (x) => await LoadProfile());
+            //LoadCommand = new DelegateCommand<UserProfile>(async (x) => await LoadPage());
             //Task.Run(async () => { await LoadProfile(); }).Wait();
 
         }
 
 
-        private async Task LoadMethods()
+        private async Task LoadPage()
         {
             await Pass(async () =>
             {
-                string url = "http://files.ethesis.eu/ecare/generalinformation/PaymentMethods.txt";
 
-                var client = new WebClient { Encoding = System.Text.Encoding.UTF8 };
+                var res = await _dataClient.GetResource("FinancialProducts.Content1", "el-GR");
 
-                MethodsHtml = client.DownloadString(url);
+                if (res!= null && res.Value != null)
+                {
+                    FinancialHtml = res.Value;
+                }
+
             });
         }
 
@@ -75,13 +77,9 @@ namespace EcareMob.ViewModels.GeneralInfo
             //    _partId = parameters.GetValue<string>(NavigationParams.PartId);
             //}
 
-            await LoadMethods();
+            await LoadPage();
 
         }
-
-
-
-
-
     }
 }
+

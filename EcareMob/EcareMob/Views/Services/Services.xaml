@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="EcareMob.Views.Services.Services"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:generalInfo="clr-namespace:EcareMob.Views.GeneralInfo;assembly=EcareMob"
+    xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:services="clr-namespace:EcareMob.Views.Services;assembly=EcareMob"
+    Title="{Binding Title}"
+    mvvm:ViewModelLocator.AutowireViewModel="True">
+    <!--  Pages can be added as references or inline  -->
+    <TabbedPage.Children>
+        <services:FinancialProgram />
+        <services:InsuranceProgram />
+        <services:InsuranceCalculator />
+    </TabbedPage.Children>
+</TabbedPage>

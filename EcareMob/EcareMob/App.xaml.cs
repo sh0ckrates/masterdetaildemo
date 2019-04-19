@@ -7,8 +7,10 @@ using Prism;
 using Prism.Ioc;
 using EcareMob.ViewModels;
 using EcareMob.ViewModels.GeneralInfo;
+using EcareMob.ViewModels.Services;
 using EcareMob.Views;
 using EcareMob.Views.GeneralInfo;
+using EcareMob.Views.Services;
 using Plugin.Iconize;
 using Prism.DryIoc;
 using Xamarin.Forms;
@@ -71,14 +73,22 @@ namespace EcareMob
             containerRegistry.RegisterForNavigation<Contact, ContactViewModel>();
             containerRegistry.RegisterForNavigation<Profile, ProfileViewModel>();
             containerRegistry.RegisterForNavigation<Register, RegisterViewModel>();
+            containerRegistry.RegisterForNavigation<ChangePassword,ChangePasswordViewModel>();
+
             containerRegistry.RegisterForNavigation<History, HistoryViewModel>();
             containerRegistry.RegisterForNavigation<Contracts, ContractsViewModel>();
-
+            
+            //GeneralInfo
             containerRegistry.RegisterForNavigation<GeneralInfo, GeneralInfoViewModel>();
             containerRegistry.RegisterForNavigation<VehicleSuspectionCheck, VehicleSuspectionCheckViewModel>();
             containerRegistry.RegisterForNavigation<PaymentMethods, PaymentMethodsViewModel>();
             containerRegistry.RegisterForNavigation<EndOfTermProcess, EndOfTermProcessViewModel>();
 
+            //Services
+            containerRegistry.RegisterForNavigation<Views.Services.Services, ServicesViewModel>();
+            containerRegistry.RegisterForNavigation<InsuranceProgram, InsuranceProgramViewModel>();
+            containerRegistry.RegisterForNavigation<FinancialProgram, FinancialProgarmViewModel>();
+            containerRegistry.RegisterForNavigation<InsuranceCalculator, InsuranceCalculatorViewModel>();
 
 
             containerRegistry.RegisterForNavigation<Test>();
