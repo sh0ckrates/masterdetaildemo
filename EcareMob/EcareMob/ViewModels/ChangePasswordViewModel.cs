@@ -116,7 +116,8 @@ namespace EcareMob.ViewModels
                     var newPassModel = new ChangePasswordModel()
                     {
                         NewPassword = Encryption.Encrypt(Password, Settings.EncKey),
-                        UserId = Settings.UserId
+                        UserId = Settings.UserId,
+                        PreviousPassword = PreviousPassword
                     };
 
                     var res = await _dataClient.ChangePassword(newPassModel);

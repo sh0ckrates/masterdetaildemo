@@ -13,7 +13,9 @@ using Prism.Services;
 using Thesis.Invetory.Shared.Services;
 using EcareMob.Clients;
 using EcareMob.Models;
+using EcareMob.Views;
 using Xamanimation;
+using Xamarin.Forms;
 
 namespace EcareMob.ViewModels
 {
@@ -89,7 +91,7 @@ namespace EcareMob.ViewModels
 
 
 
-            LoginCommand = new DelegateCommand(async () => await Login(), LoginCommandCanExecute)
+            LoginCommand = new DelegateCommand(async () => await Login() , LoginCommandCanExecute)
                 .ObservesProperty(() => Username)
                 .ObservesProperty(() => Password); 
             GotoRegisterCommand = new DelegateCommand(async () => await NavigationService.NavigateAsync("/Register"));
@@ -122,8 +124,14 @@ namespace EcareMob.ViewModels
                     }
 
                     //App.IsLoggedIn = true;
-                    //await NavigationService.NavigateAsync("/RootPage/NavigationPage/MainPage");
-                    await NavigationService.NavigateAsync("/RootPage/NavigationPage/Profile");
+                    await NavigationService.NavigateAsync("/RootPage/NavigationPage/History");
+                    //await NavigationService.NavigateAsync("/RootPage/NavigationPage/Contracts", null, false, true);
+
+                    //await NavigationService.NavigateAsync(new System.Uri("RootPage/NavigationPage/Contracts", System.UriKind.Relative), useModalNavigation: false);
+
+                    //await this.NavigationService.NavigateAsync("/RootPage/NavigationPage/Contracts",
+                    //    useModalNavigation: false);
+
 
                 }
                 else
