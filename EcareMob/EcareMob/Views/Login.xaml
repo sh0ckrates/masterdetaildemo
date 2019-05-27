@@ -38,7 +38,7 @@
 
         <Entry
             HorizontalTextAlignment="Center"
-            Placeholder="Όνομα Χρήστη"
+            Placeholder="Α.Φ.Μ."
             Text="{Binding Username}" />
         <Entry
             HorizontalTextAlignment="Center"
@@ -51,43 +51,31 @@
             Command="{Binding LoginCommand}"
             HorizontalOptions="FillAndExpand"
             StyleId="SignInButton"
-            Text="Είσοδος"
+            Text="Εισοδος"
             TextColor="White" />
 
+        <BoxView
+            Margin="0,30,0,0"
+            HeightRequest="1"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            WidthRequest="80"
+            Color="#5b5d68" />
 
-        <StackLayout
-            Padding="0,20,0,0"
-            HorizontalOptions="FillAndExpand"
-            Orientation="Horizontal">
+        <Label
+            Margin="0,30,0,30"
+            FontAttributes="Bold"
+            FontSize="15"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Style="{DynamicResource EvolveListTextStyleBold}"
+            Text="Είστε νέος χρήστης; Γραφτείτε τώρα!"
+            TextColor="{StaticResource Primary}">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding GotoRegisterCommand}" />
+            </Label.GestureRecognizers>
+        </Label>
 
-            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
-                <Label
-                    Style="{DynamicResource EvolveListTextStyle}"
-                    Text="Είστε νέος χρήστης;"
-                    TextColor="{DynamicResource DetailTextColor}"
-                    VerticalTextAlignment="Center" />
-            </StackLayout>
-
-
-            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
-                <Label
-                    FontAttributes="Bold"
-                    Style="{DynamicResource EvolveListTextStyleBold}"
-                    Text="Γραφτείτε τώρα!"
-                    TextColor="{StaticResource Primary}"
-                    VerticalTextAlignment="Center">
-                    <Label.Font>
-                        <OnPlatform
-                            x:TypeArguments="Font"
-                            Android="Semibold"
-                            iOS="Semibold" />
-                    </Label.Font>
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GotoRegisterCommand}" />
-                    </Label.GestureRecognizers>
-                </Label>
-            </StackLayout>
-        </StackLayout>
 
         <StackLayout
             Grid.Row="1"

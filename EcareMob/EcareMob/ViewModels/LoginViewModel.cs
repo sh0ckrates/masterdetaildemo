@@ -124,7 +124,9 @@ namespace EcareMob.ViewModels
                     }
 
                     //App.IsLoggedIn = true;
-                    await NavigationService.NavigateAsync("/RootPage/NavigationPage/History");
+                    //await NavigationService.NavigateAsync("/RootPage/NavigationPage/History");
+                    await NavigationService.NavigateAsync("/RootPage/NavigationPage/Profile");
+
                     //await NavigationService.NavigateAsync("/RootPage/NavigationPage/Contracts", null, false, true);
 
                     //await NavigationService.NavigateAsync(new System.Uri("RootPage/NavigationPage/Contracts", System.UriKind.Relative), useModalNavigation: false);
